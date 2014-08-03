@@ -1,0 +1,27 @@
+{% block menu %}
+<div class="meny">
+    <div id="meny-content-wrapper">
+        <div id="logo"><img src="{{ asset('assets/images/logo.png') }}" title="ExoticCarParts" /></div>
+        <div id="language">             
+            <a class="lang" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'pl' })) }}"><img src="{{ asset('assets/images/flagi/pl.jpg') }}" alt="pl" /></a>
+            <a class="lang" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en' })) }}"><img src="{{ asset('assets/images/flagi/en.jpg') }}" alt="en" /></a>
+            <a class="lang" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'de' })) }}"><img src="{{ asset('assets/images/flagi/de.jpg') }}" alt="de" /></a>
+            <a class="lang" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ch' })) }}"><img src="{{ asset('assets/images/flagi/ch.jpg') }}" alt="ch" /></a>
+        </div>
+        <div class="clear"></div>
+        <ul id="menu">
+            <li><a href="{{ path('page_start') }}">{{ 'start'|trans }}</a></li>
+            <li><a href="{{ path('page_o_nas') }}">{{ 'oNas'|trans }}</a></li>
+            <li><a href="{{ path('page_oferta') }}">{{ 'oferta'|trans }}</a></li>
+            <li><a href="{{ path('page_serwis') }}">{{ 'serwis'|trans }}</a></li>
+            <li><a href="{{ path('page_opancerzenie') }}">{{ 'opancerzenie'|trans }}</a></li>
+            <li><a href="{{ path('page_faq') }}">{{ 'faq'|trans }}</a></li>
+            <li><a href="{{ path('page_kontakt') }}">{{ 'kontakt'|trans }}</a></li>
+        </ul>
+    </div>
+</div>
+<div class="meny-menu">MENU</div>
+{% endblock %}
+
+
+

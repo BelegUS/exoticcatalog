@@ -1,0 +1,147 @@
+@font-face {
+    font-family: 'menu';
+    src: url('../fonts/Audiowide-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#language{
+    float:right;
+    margin-right: 10px;
+}
+
+#language img{
+    margin: 3px;
+}
+
+.lang img
+{
+    vertical-align: middle;
+    height: 15px;
+}
+
+
+#logo{
+    text-align:center;
+}
+
+#logo img{
+    width: 240px;
+}
+
+#meny-content-wrapper{
+    display:none;
+}
+
+.meny {
+    position: fixed;
+    display: none;
+    padding: 20px;
+    overflow: auto;
+    background:url(../images/menu-bg.jpg);
+    color: #eee;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    
+    box-sizing: border-box;
+    
+    text-align: center;
+    
+    /*Poprawki dla durnego Safari i iShitów*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-backface-visibility: hidden;
+}
+
+
+.meny ul {
+    margin-top: 10px;
+    
+    /*Poprawki dla durnego Safari i iShitów*/
+        position: relative;
+    -webkit-transform: translate3d(0,0,0);
+}
+.meny ul li {
+    display: inline-block;
+    width: 10%;
+    list-style: none;
+    font-size: 20px;
+    margin: 1px 1% 0 1%;
+}
+.meny ul li:before {
+    content: '';
+    margin-right: 5px;
+    color: rgba( 255, 255, 255, 0.2 );
+}
+
+a:link, a:visited, a:active{
+    color:#C0C0C0;
+}                  
+a:hover {
+    color:#F00;
+}
+
+
+/**
+ * Hint graphic that appears while menu is inactive
+ */
+.meny-menu {
+    position: fixed;
+    z-index: 10;
+    display: none; 
+    
+    width: 100%;
+    text-align: center;
+
+    font-family: 'menu';
+    font-size:30px;
+    color:#C0C0C0;
+
+    -webkit-transition: opacity 0.4s ease 0.4s;
+    -moz-transition: opacity 0.4s ease 0.4s;
+    -ms-transition: opacity 0.4s ease 0.4s;
+    -o-transition: opacity 0.4s ease 0.4s;
+    transition: opacity 0.4s ease 0.4s;
+    
+        /*Poprawki dla durnego Safari i iShitów*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-backface-visibility: hidden;
+}
+
+
+
+/*.meny-top .meny-menu {
+}*/
+
+.meny-active .meny-menu {
+    opacity: 0;
+
+    -webkit-transition: opacity 0.2s ease;
+    -moz-transition: opacity 0.2s ease;
+    -ms-transition: opacity 0.2s ease;
+    -o-transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease;
+}      
+
+@media only screen and (max-width: 768px) and (min-width: 570px){
+.meny ul li {
+    font-size: 14px;
+}    
+    
+}
+
+@media only screen and (max-width: 570px) and (min-width: 450px){
+.meny ul li {
+    font-size: 12px;
+}    
+    
+}
+
+@media only screen and (max-width: 450px) {
+.meny ul li {
+    font-size: 10px;
+}    
+    
+}

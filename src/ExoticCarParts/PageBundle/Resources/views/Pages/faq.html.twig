@@ -1,0 +1,25 @@
+{% extends 'PageBundle::base.html.twig' %}
+
+{% block content %}
+<div class="wrap text">
+
+    <!---start-Features---->
+    <div class="feature-grids">
+        <div class="feature-grid-head">
+            <div class="feature-grid-head-top">
+                <label> </label><span> </span> <label> </label>
+                <div class="clear"> </div>
+            </div>
+            <h3>{{ 'faq'|trans }}</h3>
+        </div>
+        <div class="clear"> </div>
+        <div class="feature-grid">
+
+            <div class="feature-grid-center">
+                {{ 'faqTekst1'|trans|raw }}
+            </div>
+        </div>
+    </div>
+    <!---End-Features---->
+</div>
+{% endblock %}

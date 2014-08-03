@@ -1,0 +1,173 @@
+{% extends 'PageBundle::base.html.twig' %}
+
+{% block content %}
+<!---start-Contact---->
+<div class="contact text">
+    <div class="contact-map">
+        <!--<div id="map-canvas"></div>-->
+        <iframe 
+            width="100%"  
+            height="350px"
+            frameborder="0" 
+            style="border:0"
+            src="{{ 'mapaLink'|trans|raw }}"
+            >            
+        </iframe> 
+    </div>
+</div>
+<div class="wrap text">
+    <div class="feature-grid-head">
+        <div class="feature-grid-head-top contact-top-head">
+            <label> </label><span> </span> <label> </label>
+            <div class="clear"> </div>
+        </div>
+        <h3>{{ 'kontakt'|trans }}</h3>
+    </div>
+    <div class="contact-top-grids">
+        <div class="c-top-grid">
+            <span> </span>
+            <h3>{{ 'adres'|trans }}</h3>
+            <ul>
+                {{ 'adresHTML'|trans|raw }}
+            </ul>
+        </div>
+        <div class="c-top-grid c-top-grid1">
+            <span> </span>
+            <h3>{{ 'telefon'|trans }}</h3>
+            <ul>
+                {{ 'telefonHTML'|trans|raw }}
+            </ul>
+        </div>
+        <div class="c-top-grid c-top-grid2">
+            <span> </span>
+            <h3>{{ 'czasPracy'|trans }}</h3>
+            <ul>
+                <li>Mon-Fri-07:00-20:00</li>
+                <li>Saturday-08:00-18:00</li>
+                <li>Sunday-Closed</li>
+            </ul>
+        </div>
+        <div class="c-top-grid last-grid">
+            <span> </span>
+            <h3>{{ 'email'|trans }}</h3>
+            <ul>
+                <li>df@exoticcarparts.de</li>
+            </ul>
+        </div>
+        <div class="clear"> </div>
+    </div>
+
+    <!---start-contact-form--->
+    <div class="contact-form">
+        <div class="feature-grid-head">
+            <div class="feature-grid-head-top contact-form-head">
+                <label> </label><span> </span> <label> </label>
+                <div class="clear"> </div>
+            </div>
+            <h3>{{ 'formularzKontaktowy'|trans }}</h3>
+        </div>
+        <form method='post' action='web/includes/sites/functions/sendmail.php' id="form">
+            <div class="text-box-grids">
+                <!-- First line of inputs-->
+                <div class="text-box">
+                    <input type="text" name="name" id="name" 
+                           value="{{ 'imie'|trans }}" 
+                           onfocus="if (this.value == '{{ 'imie'|trans }}')
+                                       this.value = '';" 
+                           onblur="if (this.value == '')
+                                       this.value = '{{ 'imie'|trans }}';"
+                           >
+                </div>
+                <div class="text-box">
+                    <input type="email" name="mail" id="mail" required 
+                           value="{{ 'emailNadawcy'|trans }}" 
+                           onfocus="if (this.value == '{{ 'emailNadawcy'|trans }}')
+                                       this.value = '';" 
+                           onblur="if (this.value == '')
+                                       this.value = '{{ 'emailNadawcy'|trans }}';"
+                           >
+                </div>
+                <div class="text-box">
+                    <input type="text" name="phone" id="phone" 
+                           value="{{ 'telefon'|trans }}" 
+                           onfocus="if (this.value == '{{ 'telefon'|trans }}')
+                                       this.value = '';" 
+                           onblur="if (this.value == '')
+                                       this.value = '{{ 'telefon'|trans }}';"
+                           >
+                </div>
+                <div class="clear"> </div>
+                <!-- Second line of inputs-->
+                <div class="text-box"></div>    <!--Just to move next div to middle-->
+                <div class="text-box">
+                    <select name="reasonOfContact" id="reasonOfContact" required>
+                        <option value="" selected>{{ 'celKontaktu'|trans }}</option>
+                        <option value="part">{{ 'dostepnoscCzesci'|trans }}</option>
+                        <option value="other">{{ 'inny'|trans }}</option>
+                    </select>
+                </div>
+                <div class="clear"> </div>
+                <!-- Third line of inputs-->
+                <div class="text-box"></div>    <!--Just to move next div to middle-->
+                <div class="text-box">
+                    <input type="text" name="catalogueNumber" id="catalogueNumber" required
+                           value="{{ 'numerKatalogowy'|trans }}" 
+                           onfocus="if (this.value == '{{ 'numerKatalogowy'|trans }}')
+                                       this.value = '';" 
+                           onblur="if (this.value == '')
+                                       this.value = '{{ 'numerKatalogowy'|trans }}';"
+                           >
+                </div>
+                <div class="clear"> </div>                    
+                <!-- Fourth line of inputs-->
+                <div class="text-box">
+                    <input type="text" name="brand" id="brand" 
+                           value="{{ 'marka'|trans }}" 
+                           onfocus="if (this.value == '{{ 'marka'|trans }}')
+                                       this.value = '';" 
+                           onblur="if (this.value == '')
+                                       this.value = '{{ 'marka'|trans }}';"
+                           >
+                </div>
+                <div class="text-box">
+                    <input type="text" name="model" id="model" 
+                           value="{{ 'model'|trans }}" 
+                           onfocus="if (this.value == '{{ 'model'|trans }}')
+                                       this.value = '';" 
+                           onblur="if (this.value == '')
+                                       this.value = '{{ 'model'|trans }}';"
+                           >
+                </div>
+                <div class="text-box">
+                    <input type="text" name="vin" id="vin" 
+                           value="{{ 'vin'|trans }}" 
+                           onfocus="if (this.value == '{{ 'vin'|trans }}')
+                                       this.value = '';" 
+                           onblur="if (this.value == '')
+                                       this.value = '{{ 'vin'|trans }}';"
+                           >
+                    <div class="clear"> </div>
+                </div>
+                <div class="textarea-box">
+                    <textarea id="textarea" rows="2" cols="70" onfocus="if (this.value == '{{ 'trescWiadomosci'|trans }}')
+                                       this.value = '';" onblur="if (this.value == '')
+                                       this.value = '{{ 'trescWiadomosci'|trans }}';" >{{ 'trescWiadomosci'|trans }}</textarea>
+                </div>
+                <div class="clear"> </div>
+                <input type="submit" id="submit-button" value="{{ 'wyslij'|trans }}" />
+
+        </form>
+        <div id="result"></div>
+    </div>
+    <!---//End-contact-form--->
+</div>
+<!---End-Contact---->
+</div>
+<!---End-content---->
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script>var pathSend = '{{ path('page_kontakt_send') }}';</script>
+<script type="text/javascript" src="{{ asset('assets/js/sites/kontakt.js') }}"></script>
+{% endblock %}

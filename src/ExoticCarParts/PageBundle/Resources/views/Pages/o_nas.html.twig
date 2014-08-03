@@ -1,0 +1,54 @@
+{% extends 'PageBundle::base.html.twig' %}
+
+{% block content %}
+<div class="wrap text">
+    <!---start-Features---->
+    <div class="feature-grids">
+        <div class="feature-grid-head">
+            <div class="feature-grid-head-top">
+                <label> </label><span> </span> <label> </label>
+                <div class="clear"> </div>
+            </div>
+            <h3>{{ 'oNas'|trans }}</h3>
+        </div>
+        <div class="clear"> </div>
+        <div class="feature-grid">
+            
+            <div class="feature-grid-left">
+                <img src="{{ asset('assets/images/o_nas/logo.png') }}" alt="" align="right" />	
+            </div>
+            <div class="feature-grid-center">
+                <p>{{ 'oNasTekst1'|trans|raw }}</p>
+            </div>
+            <div class="clear"> </div>
+            </div>
+        <div class="feature-grid">
+            <div class="feature-grid-left">
+                <img src="{{ asset('assets/images/o_nas/mapa.png') }}" alt="" align="right" />
+            </div>
+            <div class="feature-grid-center">
+                <p>{{ 'oNasTekst2'|trans|raw }}</p>
+            </div>
+            <div class="clear"> </div>
+            </div>
+        <div class="feature-grid">
+            <div class="feature-grid-left">
+            <img src='{{ asset('assets/images/o_nas/mansory.png') }}' alt="" align="right" />
+            </div>
+            <div class="feature-grid-center">
+                <p>{{ 'oNasTekst3'|trans|raw  }}</p>
+            </div>
+            <div class="feature-grid-right">
+                <p align="right">{{ 'oNasTekst4'|trans|raw  }}</p>
+            </div>
+
+            <div class="clear"> </div>
+        </div>
+
+
+    </div>
+    <!---End-Features---->
+
+
+</div>
+{% endblock %}

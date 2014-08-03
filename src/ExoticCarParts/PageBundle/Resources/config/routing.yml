@@ -1,0 +1,38 @@
+locale:
+  path: /
+  defaults:  { _controller: PageBundle:Default:locale }
+  
+page_start:
+    pattern:  /{_locale}/start
+    defaults: { _controller: PageBundle:Default:start }  
+
+page_o_nas:
+    pattern:  /{_locale}/about
+    defaults: { _controller: PageBundle:Default:o_nas }
+    
+page_oferta:
+    pattern:  /{_locale}/offer
+    defaults: { _controller: PageBundle:Default:oferta }
+    
+page_serwis:
+    pattern:  /{_locale}/service
+    defaults: { _controller: PageBundle:Default:serwis }
+    
+page_opancerzenie:
+    pattern:  /{_locale}/armoring
+    defaults: { _controller: PageBundle:Default:opancerzenie }      
+
+page_faq:
+    pattern:  /{_locale}/faq
+    defaults: { _controller: PageBundle:Default:faq }  
+    
+page_kontakt:
+    pattern:  /{_locale}/contact
+    defaults: { _controller: PageBundle:Default:kontakt } 
+    methods: [GET]
+    
+page_kontakt_send:
+    pattern:  /{_locale}/contact
+    defaults: { _controller: PageBundle:Default:kontaktSend } 
+    methods: [POST]    
+

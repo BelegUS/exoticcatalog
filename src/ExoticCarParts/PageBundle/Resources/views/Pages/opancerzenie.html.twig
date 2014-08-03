@@ -1,0 +1,38 @@
+{% extends 'PageBundle::base.html.twig' %}
+
+{% block content %}
+<div class="wrap text">
+
+    <!---start-Features---->
+    <div class="feature-grids">
+        <div class="feature-grid-head">
+            <div class="feature-grid-head-top">
+                <label> </label><span> </span> <label> </label>
+                <div class="clear"> </div>
+            </div>
+            <h3>{{ 'opancerzenie'|trans }}</h3>
+        </div>
+        <div class="clear"> </div>
+        <div class="feature-grid">
+            <div class="feature-grid-left">
+               <div class="slideshowOpancerzanie"> 
+                    <img src="{{ asset('assets/images/start/ecp.png') }}" alt="" />
+                    <img src="{{ asset('assets/images/start/sls.png') }}" alt="" />
+                    <img src="{{ asset('assets/images/start/porsche.png') }}" alt="" />
+                </div>
+        <div class="clear"> </div>
+            </div>
+            <div class="feature-grid-right">
+                <p>{{ 'opancerzenieTekst1'|trans|raw }}</p>
+            </div>
+            <div class="clear"> </div>
+        </div>
+    </div>
+    <!---End-Features---->
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('assets/js/sites/opancerzenie.js') }}"></script>
+{% endblock %}

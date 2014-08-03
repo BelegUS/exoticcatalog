@@ -1,0 +1,33 @@
+{% extends 'PageBundle::base.html.twig' %}
+
+{% block content %}
+<div class="wrap text">
+
+    <!---start-Features---->
+    <div class="feature-grids">
+
+        <div class="feature-grid-head">
+            <div class="feature-grid-head-top">
+                <label></label><span></span><label></label>
+                <div class="clear"> </div>
+
+                <h3>{{ 'start'|trans }}</h3>
+            </div>
+        </div>
+        <div class="clear"> </div>
+        <div class="feature-grid">
+
+            <div class="feature-grid-center">
+                <div class="clear"> </div>
+            </div>
+
+            <div class="feature-grid-center">
+                <p>{{ 'startTekst1'|trans|raw }}</p>
+            </div>
+        </div>
+        <div class="clear"> </div>
+    </div>
+
+
+</div>
+{% endblock %}

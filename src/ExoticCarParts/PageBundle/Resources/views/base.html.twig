@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+    <!-- Start head -->
+    <head>
+{% block title %}<title>ExoticCarParts</title>{% endblock %}
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+            <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+{% block stylesheets %}
+            <!-- Main Page Stylesheet -->
+            <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />    
+            <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>    
+            <!-- Animation Stylesheet -->
+            <link href="{{ asset('assets/css/animate.css') }}" rel="stylesheet" type="text/css" />
+            <!-- Nerve Slider Stylesheet -->
+            <link rel="stylesheet" href="http://code.ryanbruzan.net/nerveSlider/nerveSlider.min.css" /> 
+            <!-- Meny Menu Stylesheet -->
+            <link rel="stylesheet" href="{{ asset('assets/css/meny.css') }}">
+            <!-- Vegas Background Stylesheet -->
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery.vegas.min.css') }}" />
+{% endblock %}    
+        </head>
+        <!-- //End head-->
+
+        <body>
+            <!--start lang and menu in MENY-->
+{{ include('PageBundle:Layout:menu.html.twig') }}
+            <!-- //End lang and menu in MENY-->
+
+            <div class="contents">
+
+    {% block content %}
+                <div class="content animated bounceInDown">
+
+                </div>
+    {% endblock %}
+
+                <!---strat-footer--->
+{{ include('PageBundle:Layout:footer.html.twig') }}
+                <!---End-footer--->
+
+                <!---strat-copy-right---->
+{{ include('PageBundle:Layout:copyright.html.twig') }} 
+                <!---End-copy-right---->
+
+            </div>
+
+{% block javascripts %}
+            <!-- JQuery Library -->
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+            <!-- Nerve Slider Library -->
+            <script src="http://code.ryanbruzan.net/nerveSlider/jquery.nerveSlider.min.js"></script>
+            <!-- Slide Features Code -->
+            <script type="text/javascript" src="{{ asset('assets/js/slideFeatures.js') }}"></script>
+            <!-- Meny Menu Library & Settings -->
+            <script src="{{ asset('assets/js/meny.min.js') }}"></script>
+            <script src="{{ asset('assets/js/menySettings.js') }}"></script>
+            <!-- Ebay Auctions -->
+            <script type="text/javascript" src="{{ asset('assets/js/ebayAuctions.js') }}"></script>
+            <!-- Vegas Background Library, Vars & Settings -->
+            <script type="text/javascript" src="{{ asset('assets/js/jquery.vegas.min.js') }}"></script>
+            <script>var backgroundImages = [
+                {src: "{{ asset('assets/images/background/1.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/2.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/3.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/4.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/5.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/6.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/7.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/8.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/9.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/10.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/11.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/12.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/13.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/14.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/15.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/16.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/17.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/18.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/19.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/20.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/21.jpg') }}", fade: 1500},
+                {src: "{{ asset('assets/images/background/22.jpg') }}", fade: 1500},
+                ];
+            var overlay = "{{ asset('assets/images/overlays/03.png') }}";</script>
+            <script type="text/javascript" src="{{ asset('assets/js/vegasSettings.js') }}"></script>
+{% endblock %}
+        </body>
+
+    </html>
+

@@ -1,0 +1,40 @@
+
+    #slides {
+      display: none
+    }
+
+    .container-slideshow {
+      margin: 0 auto
+    }
+
+    /* For tablets & smart phones */
+    @media (max-width: 767px) {
+      body {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .container-slideshow {
+        width: auto
+      }
+    }
+
+    /* For smartphones */
+    @media (max-width: 480px) {
+      .container-slideshow {
+        width: auto
+      }
+    }
+
+    /* For smaller displays like laptops */
+    @media (min-width: 768px) and (max-width: 979px) {
+      .container-slideshow {
+        width: 640px
+      }
+    }
+
+    /* For larger displays */
+    @media (min-width: 1200px) {
+      .container-slideshow {
+        width: 1170px
+      }
+    }

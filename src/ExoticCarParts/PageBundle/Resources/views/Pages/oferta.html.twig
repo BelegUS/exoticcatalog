@@ -1,0 +1,59 @@
+{% extends 'PageBundle::base.html.twig' %}
+
+{% block content %}
+<div class="wrap text">
+
+    <!---start-Features---->
+    <div class="feature-grids ">
+        <div class="feature-grid-head">
+            <div class="feature-grid-head-top">
+                <label> </label><span> </span> <label> </label>
+                <div class="clear"> </div>
+            </div>
+            <h3>{{ 'oferta'|trans }}</h3>
+        </div>
+        <div class="clear"> </div>
+        <div class="feature-grid">
+
+            <div class="feature-grid-center">
+                <p>{{ 'ofertaTekst1'|trans|raw }}</p>
+            </div>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-grid-left">
+                <div class="slideshowOferta"> 
+                    <img src="{{ asset('assets/images/oferta/slajdy/ferrarisilnik.png') }}" alt="" />
+                    <img src="{{ asset('assets/images/oferta/slajdy/porschezawieszenie.png') }}" alt="" />
+                    <img src="{{ asset('assets/images/oferta/slajdy/porschesilnik.png') }}" alt="" />
+                </div>
+
+            </div>
+            <div class="feature-grid-right special-oferta">
+                <p>{{ 'ofertaTekst2'|trans|raw }}</p>
+            </div>
+            <div class="clear"> </div>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-grid-center">
+                <p>{{ 'ofertaTekst3'|trans|raw }}</p>
+            </div>
+            <div class="feature-grid-center">
+                <img src="{{ asset('assets/images/oferta/599.png') }}" alt="" />
+            </div>
+
+            <div class="clear"> </div>
+        </div>
+
+
+    </div>
+    <!---End-Features---->
+
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('assets/js/sites/oferta.js') }}"></script>
+{% endblock %}
