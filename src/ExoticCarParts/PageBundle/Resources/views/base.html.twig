@@ -35,21 +35,18 @@
 
                 </div>
     {% endblock %}
+                <div class="push"></div>
+            </div>
 
                 <!---strat-footer--->
 {{ include('PageBundle:Layout:footer.html.twig') }}
                 <!---End-footer--->
-
-                <!---strat-copy-right---->
-{{ include('PageBundle:Layout:copyright.html.twig') }} 
-                <!---End-copy-right---->
-
-            </div>
-
 {% block javascripts %}
             <!-- JQuery Library -->
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
             <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+            <!-- Sticky Footer Library -->
+            <script type="text/javascript" src="{{ asset('assets/js/stickyFooter.js') }}"></script>
             <!-- Nerve Slider Library -->
             <script src="http://code.ryanbruzan.net/nerveSlider/jquery.nerveSlider.min.js"></script>
             <!-- Slide Features Code -->
@@ -85,7 +82,7 @@
                 {src: "{{ asset('assets/images/background/21.jpg') }}", fade: 1500},
                 {src: "{{ asset('assets/images/background/22.jpg') }}", fade: 1500},
                 ];
-            var overlay = "{{ asset('assets/images/overlays/03.png') }}";</script>
+                var overlay = "{{ asset('assets/images/overlays/03.png') }}";</script>
             <script type="text/javascript" src="{{ asset('assets/js/vegasSettings.js') }}"></script>
 {% endblock %}
         </body>
