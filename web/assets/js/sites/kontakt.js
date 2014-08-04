@@ -24,7 +24,7 @@ $(function() {
         // Stop the form actually posting
         e.preventDefault();
         var url = $("#contactForm").attr("action");
-
+        //If reason of Contact: "other", then remove() unnecesary part-related values
         // Send the request
         $.post(url,
                 $("#contactForm").serialize(),

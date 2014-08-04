@@ -42,25 +42,24 @@ class DefaultController extends Controller {
     }
 
     public function kontaktSendAction() {
-    $request = $this->get('request');
-    
-    $name=$request->request->get('name');
-    $mail=$request->request->get('mail');
-    $phone=$request->request->get('phone');
-    $textContent=$request->request->get('textContent');
+        $params = $this->getRequest()->request->all();
         
-    $message = \Swift_Message::newInstance()
-            ->setSubject('ECP - new mail from '.$mail)
-            ->setFrom('contact@exoticcarparts.de')
-            ->setTo('contact@exoticcarparts.de')
-            ->setReplyTo($mail)
-            ->setBody($textContent);
-    $this->get('mailer')->send($message);
-    
-    $return=array("responseCode"=>200,  "success"=>true);
-    
-    $return=json_encode($return);//jscon encode the array
-    return new Response($return,200,array('Content-Type'=>'application/json'));
+        $message = \Swift_Message::newInstance()
+                ->setSubject('ECP - new mail from ' . $params['mail'])
+                ->setFrom('contact@exoticcarparts.de')
+                ->setTo('contact@exoticcarparts.de')
+                ->setReplyTo($params['mail'])
+                ->setBody(
+                $this->renderView(
+                        'PageBundle:Pages:mail.txt.twig', array('params' => $params)
+                )
+        );
+        $this->get('mailer')->send($message);
+
+        $return = array("responseCode" => 200, "success" => true);
+
+        $return = json_encode($return); //jscon encode the array
+        return new Response($return, 200, array('Content-Type' => 'application/json'));
     }
 
 }
