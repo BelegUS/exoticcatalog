@@ -66,7 +66,7 @@
             </div>
             <h3>{{ 'formularzKontaktowy'|trans }}</h3>
         </div>
-        <form method='post' action='web/includes/sites/functions/sendmail.php' id="form">
+        <form method='post' action='{{ path('page_kontakt_send') }}' id="contactForm">
             <div class="text-box-grids">
                 <!-- First line of inputs-->
                 <div class="text-box">
@@ -149,7 +149,7 @@
                     <div class="clear"> </div>
                 </div>
                 <div class="textarea-box">
-                    <textarea id="textarea" rows="2" cols="70" onfocus="if (this.value == '{{ 'trescWiadomosci'|trans }}')
+                    <textarea id="textarea" name="textContent" rows="2" cols="70" onfocus="if (this.value == '{{ 'trescWiadomosci'|trans }}')
                                        this.value = '';" onblur="if (this.value == '')
                                        this.value = '{{ 'trescWiadomosci'|trans }}';" >{{ 'trescWiadomosci'|trans }}</textarea>
                 </div>
@@ -168,6 +168,5 @@
 
 {% block javascripts %}
 {{ parent() }}
-<script>var pathSend = '{{ path('page_kontakt_send') }}';</script>
 <script type="text/javascript" src="{{ asset('assets/js/sites/kontakt.js') }}"></script>
 {% endblock %}

@@ -3,6 +3,7 @@
 namespace ExoticCarParts\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller {
 
@@ -41,12 +42,25 @@ class DefaultController extends Controller {
     }
 
     public function kontaktSendAction() {
-        $message = \Swift_Message::newInstance()
-                ->setSubject('Hello Email')
-                ->setFrom('contact@exoticcarparts.de')
-                ->setTo('contact@exoticcarparts.de')
-                ->setBody('Hello');
-        $this->get('mailer')->send($message);
+    $request = $this->get('request');
+    
+    $name=$request->request->get('name');
+    $mail=$request->request->get('mail');
+    $phone=$request->request->get('phone');
+    $textContent=$request->request->get('textContent');
+        
+    $message = \Swift_Message::newInstance()
+            ->setSubject('ECP - new mail from '.$mail)
+            ->setFrom('contact@exoticcarparts.de')
+            ->setTo('contact@exoticcarparts.de')
+            ->setReplyTo($mail)
+            ->setBody($textContent);
+    $this->get('mailer')->send($message);
+    
+    $return=array("responseCode"=>200,  "success"=>true);
+    
+    $return=json_encode($return);//jscon encode the array
+    return new Response($return,200,array('Content-Type'=>'application/json'));
     }
 
 }

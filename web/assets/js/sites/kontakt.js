@@ -20,28 +20,23 @@ $(function() { //when the DOM is ready
 });
 
 $(function() {
-    $('#form').submit(function(e) {
-
+    $('#contactForm').submit(function(e) {
         // Stop the form actually posting
         e.preventDefault();
+        var url = $("#contactForm").attr("action");
 
         // Send the request
-        $.post(pathSend, {
-            name: $('#name').val(),
-            mail: $('#mail').val(),
-            phone: $('#phone').val(),
-            reasonOfContact: $('#reasonOfContact').val(),
-            catalogueNumber: $('#catalogueNumber').val(),
-            brand: $('#brand').val(),
-            model: $('#model').val(),
-            vin: $('#vin').val(),
-            textarea: $('#textarea').val(),
-            submit: 1
-        }, function(d) {
-            // Here we handle the response from the script
-            $('#result').html(d);
+        $.post(url,
+                $("#contactForm").serialize(),
+                function(data) {
+                    // Here we handle the response from the script
+                    //$('#result').html(data);
+                if(data.responseCode==200 ){           
+                $('#result').html('Sent');
+                $('#result').css("color","green");
+                }    
 
-        });
+                });
         //Do not allow to click the button again 
         $('#submit-button').hide();
     });
