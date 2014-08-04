@@ -2,6 +2,15 @@ You've got a new Message.
 From: {{ params.name }}
 Phone: {{ params.phone }}
 Email: {{ params.mail }}
+{% if(params.reasonOfContact=='part') %}
+
+Client is asking about Part:
+Name/Catalogue Number: {{ params.catalogueNumber }}        
+Brand: {{ params.brand }}
+Model: {{ params.model }}
+VIN: {{ params.vin }}
+{% endif %}
+
 Message:
     {{ params.textContent }}
 
