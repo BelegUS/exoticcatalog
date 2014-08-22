@@ -3,6 +3,7 @@
 namespace ExoticCarParts\CrawlerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -25,12 +26,12 @@ class Brand {
     protected $id;
     
     /**
-    * @ORM\Column(type="string", length=50)
+    * @ORM\Column(type="string", length=50, unique=TRUE)
     */
     protected $name;
 
     /**
-    * @ORM\Column(type="string", length=5)
+    * @ORM\Column(type="string", length=5, unique=TRUE)
     */    
     protected $shortcut;
  

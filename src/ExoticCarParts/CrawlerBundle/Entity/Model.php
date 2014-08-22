@@ -3,6 +3,7 @@
 namespace ExoticCarParts\CrawlerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Model
@@ -24,7 +25,7 @@ class Model
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=TRUE)
      */
     private $name;
     

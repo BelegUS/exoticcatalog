@@ -1,7 +1,8 @@
 parameters:
-#    crawler.example.class: ExoticCarParts\CrawlerBundle\Example
+    ricambia_crawler.class: ExoticCarParts\CrawlerBundle\Service\RicambiaCrawler
 
 services:
-#    crawler.example:
-#        class: %crawler.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    ricambia_crawler:
+        class: %ricambia_crawler.class%
+        arguments: [ "@doctrine.orm.entity_manager" ]
+

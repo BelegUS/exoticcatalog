@@ -3,6 +3,7 @@
 namespace ExoticCarParts\CrawlerBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Part
@@ -45,9 +46,9 @@ class Part
     /**
      * @var integer
      *
-     * @ORM\Column(name="price", type="bigint")
+     * @ORM\Column(name="quantity", type="integer")
      */
-    private $price;
+    private $quantity;
     
     /**
      * @ORM\ManyToOne(targetEntity="PartsGroup", inversedBy="part")
@@ -136,26 +137,26 @@ class Part
     }
 
     /**
-     * Set price
+     * Set quantity
      *
-     * @param integer $price
+     * @param integer $quantity
      * @return Part
      */
-    public function setPrice($price)
+    public function setQuantity($quantity)
     {
-        $this->price = $price;
+        $this->quantity = $quantity;
 
         return $this;
     }
 
     /**
-     * Get price
+     * Get quantity
      *
      * @return integer 
      */
-    public function getPrice()
+    public function getQuantity()
     {
-        return $this->price;
+        return $this->quantity;
     }
 
     /**
