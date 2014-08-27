@@ -12,6 +12,8 @@
 /app/bootstrap.php.cache
 /bin/
 /vendor/
+vendor/
+vendor
 
 # Assets and user uploads
 /web/bundles/
