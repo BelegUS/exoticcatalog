@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * PartsGroup
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ExoticCarParts\CrawlerBundle\Repository\PartsGroupRepository")
  */
 class PartsGroup
 {

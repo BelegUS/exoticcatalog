@@ -19,10 +19,10 @@ class DefaultController extends Controller {
     $crawler->crawlCarsLinksList($url_to_traverse);
     
     $carLinkList=$crawler->getCarsLinksList();
+
+    $crawler->crawlModel($carLinkList[0]);
     
-    $carPartsGroupList=$crawler->crawlModel($carLinkList[1]);
-    
-    return $this->render('CrawlerBundle:Default:index.html.twig', array('data' => $carPartsGroupList));
+    return $this->render('CrawlerBundle:Default:index.html.twig', array('data' => $carLinkList));
     
     }
 
