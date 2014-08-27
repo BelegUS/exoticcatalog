@@ -108,7 +108,7 @@ class RicambiaCrawler {
                             }
                         });
                 //foreach ($partsGroupsLinks as $partsGroupLink) {
-                $this->crawlPartsGroup($partsGroupsLinks[2], $model);
+                $this->crawlPartsGroup($partsGroupsLinks[1], $model);
                 //}
             }
         }
