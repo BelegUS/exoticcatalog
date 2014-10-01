@@ -2,6 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/src/ExoticCarParts/PageBundle/Resources/views/Pages/Catalog/brandSelect.html.twig</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/app/Resources/translations/messages.ch.yml</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/app/Resources/translations/messages.en.yml</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/src/ExoticCarParts/PageBundle/Controller/DefaultController.php</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/src/ExoticCarParts/PageBundle/Controller/CatalogController.php</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/src/ExoticCarParts/PageBundle/Resources/views/Pages/Catalog/modelSelect.html.twig</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/app/Resources/translations/messages.pl.yml</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/web/assets/css/style.css</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/src/ExoticCarParts/PageBundle/Resources/views/Pages/Catalog/partSelect.html.twig</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/app/AppKernel.php</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/src/ExoticCarParts/PageBundle/Resources/views/Layout/menu.html.twig</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/app/Resources/translations/messages.de.yml</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/src/ExoticCarParts/PageBundle/Resources/views/Layout/my_cart.html.twig</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/src/ExoticCarParts/PageBundle/Resources/views/base.html.twig</file>
+            <file>file:/E:/xampp/htdocs/exoticcatalog/src/ExoticCarParts/PageBundle/Resources/config/routing.yml</file>
+        </group>
     </open-files>
 </project-private>

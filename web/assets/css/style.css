@@ -19,7 +19,9 @@ a{text-decoration:none;}
 .vertical-top{	vertical-align:top;}/* vertical align top */
 nav.vertical ul li{	display:block;}/* vertical menu */
 nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
-img{max-width:100%;}
+img{
+    max-width:100%;
+}
 @font-face {
     font-family: 'open_sansregular';
     src: url('../fonts/RobotoCondensed-Regular.ttf') format('truetype');
@@ -41,6 +43,8 @@ html, body {
 body{
     background:url(../images/main-bg.jpg);
     font-family: 'open_sansregular';
+    
+    color: #FFF;    //Default font
 }
 
 /*---start-wrap----*/
@@ -332,6 +336,37 @@ body{
     line-height: 1.5em;
     text-align:justify;
 }
+
+.feature-tables{
+    width:80%;
+    padding: 50px;
+    margin: 0 auto;
+}
+
+.feature-table{
+    width: 98%;
+    margin: 0 auto;
+}
+
+.feature-table table{
+    width: 100%;
+    max-width: 100%;
+}
+
+.feature-table table tr{
+    max-width:100%;
+}
+
+.feature-table table th{
+    text-align: left;
+    padding-bottom: 5px;
+    padding-right: 2px;
+}
+
+.feature-table table td{
+    margin-right: 2px;
+}
+
 .btn{
     color: #ff1323;
     border:2px solid #ff1323;	/*#71B6D5*/
@@ -841,7 +876,9 @@ div#auction-nudge-items ul#images-only li div.image-container {
 }
 /*---strat-protfolio----*/
 .portfolio{
+    width: 100%;
     padding: 3em 0 4em 0;
+    text-align:center;
 }
 .left-sidebar{
     float: left;
@@ -854,8 +891,8 @@ div#auction-nudge-items ul#images-only li div.image-container {
     padding: 1%;
 }
 .right-protfolio-grids{
-    float:right;
-    width:70%;
+    margin: 0 auto;
+    width: 98%;
 }
 .side-head{
     text-align:center;
@@ -982,12 +1019,15 @@ div#auction-nudge-items ul#images-only li div.image-container {
 }
 /*----portfoliio-right-grids---*/
 .right-protfolio-grid{
-    width: 33.16%;
-    float: left;
-    border: 1px solid #E6E3E3;
-    padding: 1em 0 0 0;
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    margin: 1em 0 0em 0;
     border-right: 0;
     border-bottom: 0;
+}
+.right-protfolio-grid img{
+    width: 100%;
 }
 .last-pro-grid{
     border-right: 1px solid #E6E3E3;
@@ -1019,7 +1059,6 @@ div#auction-nudge-items ul#images-only li div.image-container {
     overflow: hidden;
     position: relative;
     text-align: center;
-    cursor: default;
     background: #fff url(../images/bgimg.jpg) no-repeat center center;
 }
 .view .mask,.view .content {
@@ -1326,6 +1365,7 @@ div#auction-nudge-items ul#images-only li div.image-container {
 
 
 /*---End-contact----*/
+
 /*---start-responsive-design----*/
 @media only screen and (max-width: 1440px) and (min-width:1366px) {
     .wrap{

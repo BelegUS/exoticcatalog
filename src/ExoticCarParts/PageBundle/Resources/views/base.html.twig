@@ -19,6 +19,8 @@
             <link rel="stylesheet" href="{{ asset('assets/css/meny.css') }}">
             <!-- Vegas Background Stylesheet -->
             <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery.vegas.min.css') }}" />
+            <!-- Extruder Content Slider Stylesheet -->
+            <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/mbExtruder.css') }}" />
 {% endblock %}    
         </head>
         <!-- //End head-->
@@ -36,6 +38,7 @@
                 </div>
     {% endblock %}
                 <div class="push"></div>
+                <div id="myCart" class="{title:'{{ 'cart'|trans }}', url:'{{ path('catalog_my_cart') }}'}"></div>
             </div>
 
             <!---strat-footer--->
@@ -54,6 +57,11 @@
             <!-- Meny Menu Library & Settings -->
             <script src="{{ asset('assets/js/meny.min.js') }}"></script>
             <script src="{{ asset('assets/js/menySettings.js') }}"></script>
+            <!-- Extruder Content Slider Library -->
+            <script src="{{ asset('assets/js/mbExtruder.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.hoverIntent.min.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.mb.flipText.js') }}"></script>
+            <script src="{{ asset('assets/js/mbExtruderSettings.js') }}"</scirpt>
             <!-- Ebay Auctions -->
             <script type="text/javascript" src="{{ asset('assets/js/ebayAuctions.js') }}"></script>
             <!-- Vegas Background Library, Vars & Settings -->

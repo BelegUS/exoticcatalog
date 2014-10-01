@@ -8,12 +8,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Model
  *
- * @ORM\Table()
+ * @ORM\Table(name="model")
  * @ORM\Entity(repositoryClass="ExoticCarParts\CrawlerBundle\Repository\ModelRepository")
  */
 class Model
 {
-    /**
+     /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -30,8 +30,10 @@ class Model
     private $name;
     
     /**
+     * @var Brand
+     * 
      * @ORM\ManyToOne(targetEntity="Brand", inversedBy="models")
-     * @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="brand_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $brand;    
     
@@ -73,6 +75,7 @@ class Model
     {
         return $this->name;
     }
+
     /**
      * Constructor
      */

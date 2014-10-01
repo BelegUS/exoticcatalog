@@ -1,0 +1,30 @@
+{% extends 'PageBundle::base.html.twig' %}
+
+{% block content %}
+    <div class="wrap text">
+
+        <!---start-Features---->
+        <div class="portfolio">
+            <div class="right-protfolio-grids">
+                {% for brand in brands %}
+                        <a href="{{ path('catalog_model_select', {'brandId': brand.id}) }}"><div class="right-protfolio-grid">
+                                                  
+                            <div class="view view-first">
+                                <img src="{{ asset(brand.imagePath, 'catalog_images') }}" alt=" " />
+                                <div class="mask">
+                                    <h2>{{ brand.name }}</h2>
+                                </div>
+                            </div>  
+
+                        </div></a>
+                    
+                {% endfor %}                
+            </div>  
+            <!---->
+
+            <div class="clear"> </div>
+        </div>
+
+
+    </div>
+{% endblock %}

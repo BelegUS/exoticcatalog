@@ -34,6 +34,13 @@ class Brand {
     * @ORM\Column(type="string", length=5, unique=TRUE)
     */    
     protected $shortcut;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imagePath", type="string", length=255)
+     */
+    private $imagePath;
  
     /**
     * @ORM\OneToMany(targetEntity="Model", mappedBy="brand")
@@ -95,8 +102,18 @@ class Brand {
     {
         return $this->shortcut;
     }     
+    
+    public function getImagePath()
+    {
+        return $this->imagePath;
+    }
 
-    /**
+    public function setImagePath($imagePath)
+    {
+        $this->imagePath = $imagePath;
+    }
+
+        /**
      * Add models
      *
      * @param \ExoticCarParts\CrawlerBundle\Entity\Model $models

@@ -136,3 +136,9 @@
 "telefonHTML" : |
   <li>GSM: (+49) 0151 11 61 75 84</li>
   <li>FAX: (+49) 0850 291 59 666</li>
+  
+  #Katalogi
+  
+"katalog" : "Part Catalogue"
+  
+"cart": "My cart"

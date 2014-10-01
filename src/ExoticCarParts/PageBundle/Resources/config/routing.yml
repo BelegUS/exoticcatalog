@@ -36,3 +36,27 @@ page_kontakt_send:
     defaults: { _controller: PageBundle:Default:kontaktSend } 
     methods: [POST]    
 
+catalog_brand_select:
+    pattern:  /{_locale}/catalog
+    defaults: { _controller: PageBundle:Catalog:brandSelect }     
+
+catalog_model_select:
+    pattern: /{_locale}/catalog/brand/{brandId}
+    defaults: { _controller: PageBundle:Catalog:modelSelect } 
+    
+catalog_partsgroup_select:
+    pattern: /{_locale}/catalog/model/{modelId}
+    defaults: { _controller: PageBundle:Catalog:partsGroupSelect }    
+    
+catalog_part_select:
+    pattern: /{_locale}/catalog/partsgroup/{partsGroupId}
+    defaults: { _controller: PageBundle:Catalog:partSelect }   
+
+catalog_my_cart:
+    pattern: /{_locale}/cart
+    defaults: { _controller: PageBundle:Catalog:myCart }  
+
+ajax_add_part_to_cart:
+    pattern:  /{_locale}/cart/add_part/{partId}
+    defaults: { _controller: PageBundle:Catalog:ajaxAddPartToCart }
+    

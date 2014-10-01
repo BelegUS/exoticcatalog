@@ -8,12 +8,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Part
  *
- * @ORM\Table()
+ * @ORM\Table(name="part")
  * @ORM\Entity
  */
 class Part
 {
-    /**
+     /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -32,7 +32,7 @@ class Part
     /**
      * @var string
      *
-     * @ORM\Column(name="partNumber", type="string", length=255)
+     * @ORM\Column(name="partNumber", type="string", length=200)
      */
     private $partNumber;
 
@@ -44,15 +44,24 @@ class Part
     private $name;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="quantity", type="integer")
+     * @ORM\Column(name="quantity", type="string", length=50)
      */
     private $quantity;
     
     /**
-     * @ORM\ManyToOne(targetEntity="PartsGroup", inversedBy="part")
-     * @ORM\JoinColumn(name="partsgroup_id", referencedColumnName="id")
+     * @var string
+     * 
+     * @ORM\Column(name="price", type="string", length=100)
+     */
+    private $price;
+    
+    /**
+     * @var PartsGroup
+     * 
+     * @ORM\ManyToOne(targetEntity="PartsGroup", inversedBy="parts")
+     * @ORM\JoinColumn(name="partsgroup_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $partsGroup;       
 
@@ -159,6 +168,18 @@ class Part
         return $this->quantity;
     }
 
+    
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+    
+    
     /**
      * Set partsGroup
      *

@@ -1,0 +1,82 @@
+{% extends 'PageBundle::base.html.twig' %}
+
+{% block content %}
+<div class="wrap text">
+
+    <!---start-Features---->
+    <div class="feature-grids">
+
+        <div class="feature-grid-head">
+            <div class="feature-grid-head-top">
+                <label></label><span></span><label></label>
+                <div class="clear"> </div>
+
+                <h3>{{ parts[0].partsGroup.name }}</h3>
+            </div>
+        </div>
+        <div class="clear"> </div>
+        <div class="feature-grid">
+
+            <div class="feature-grid-center">
+                                    <img src='{{ asset(parts[0].partsGroup.imagePath, 'catalog_images') }}' alt="" align="right" />
+                <div class="clear"></div>
+            </div>
+
+            <div class="feature-tables">
+                <div class="feature-table">
+                <table>
+                    <tr>
+                        <th>{{ 'Number'|trans }}</th>
+                        <th>{{ 'Serial no.'|trans }}</th>
+                        <th>{{ 'Required qnt.'|trans }}</th>
+                        <th>{{ 'Name'|trans }}</th>
+                        <th>{{ 'Price'|trans }}</th>
+                    </tr>
+                {% for part in parts %}
+                    <tr>
+                        <td>{{ part.onImageNumber }}</td>
+                        <td>{{ part.partNumber }}</td>
+                        <td>{{ part.quantity }}</td>
+                        <td>{{ part.name }}</td>
+                        <td>{{ part.price }}</td>
+                        <td><a href="" class="addToCart" id="{{ part.id }}">{{ 'Add to cart'|trans }}</a></td>
+                    </tr>
+                {% endfor %}
+                
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="clear"> </div>
+    </div>
+
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+
+function addToCartButtonPressed(id){
+    var url = '{{ path('ajax_add_part_to_cart', {'partId': 'id'}) }}'; 
+    url = url.replace("id", id);
+    $.post(url,               
+            function(response){
+                    if(response.code == 200 && response.success){
+                    }
+
+    }, "json");    
+}
+
+$(document).ready(function() {     
+  $('.addToCart').on('click', function(event){
+        event.preventDefault();
+        addToCartButtonPressed(this.id);
+        $("#cartContent").load('{{ path('catalog_my_cart') }}');
+        //$("#cartContent").load('{{ path('catalog_my_cart') }}');
+    });
+});
+
+</script>
+{% endblock %}

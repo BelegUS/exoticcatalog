@@ -1,0 +1,12 @@
+<div id="cartContent">
+{% if cart %}
+    
+{% for part in cart %}
+   
+    {{ part.name }}<br>
+
+{% endfor %}
+
+
+{% endif %}
+</div>

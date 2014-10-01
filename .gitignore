@@ -18,6 +18,7 @@ vendor
 # Assets and user uploads
 /web/bundles/
 /web/uploads/
+/web/assets/images/catalog/
 
 # PHPUnit
 /app/phpunit.xml

@@ -18,9 +18,10 @@ class DefaultController extends Controller {
     
     $crawler->crawlCarsLinksList($url_to_traverse);
     
-    $carLinkList=$crawler->getCarsLinksList();
+    //$carLinkList=$crawler->getCarsLinksList();
 
-    $crawler->crawlModel($carLinkList[0]);
+    //$crawler->crawlModel($carLinkList[0]);
+    //$carLinkList=$crawler->crawlPartsFromPartsGroup('http://www.ricambiamerica.com/parts_catalogs.php?M=LA&P=&V=diag&I=9211');
     
     return $this->render('CrawlerBundle:Default:index.html.twig', array('data' => $carLinkList));
     

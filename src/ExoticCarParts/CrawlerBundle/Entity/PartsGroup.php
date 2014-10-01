@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * PartsGroup
  *
- * @ORM\Table()
+ * @ORM\Table(name="parts_group")
  * @ORM\Entity(repositoryClass="ExoticCarParts\CrawlerBundle\Repository\PartsGroupRepository")
  */
 class PartsGroup
@@ -37,15 +37,17 @@ class PartsGroup
     private $imagePath;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Model", inversedBy="partsgroups")
-     * @ORM\JoinColumn(name="model_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Model", inversedBy="partsGroups")
+     * @ORM\JoinColumn(name="model_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $model;
     
     /**
-    * @ORM\OneToMany(targetEntity="Part", mappedBy="partsgroup")
-    */    
-    protected $part;        
+     * @var Part
+     * 
+     * @ORM\OneToMany(targetEntity="Part", mappedBy="partsGroup")
+     */    
+    protected $parts;        
 
 
     /**

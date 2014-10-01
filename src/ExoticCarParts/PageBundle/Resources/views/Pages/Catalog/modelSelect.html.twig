@@ -1,0 +1,37 @@
+{% extends 'PageBundle::base.html.twig' %}
+
+{% block content %}
+    <div class="wrap text">
+
+        <!---start-Features---->
+        <div class="feature-grids">
+
+            <div class="feature-grid-head">
+                <div class="feature-grid-head-top">
+                    <label></label><span></span><label></label>
+                    <div class="clear"> </div>
+
+                    <h3>{{ models[0][0].brand.name }}</h3>
+                </div>
+            </div>
+            <div class="clear"> </div>
+            <div class="feature-tables">
+                <div class="feature-table">
+                    <table>
+                    {% for row in models %}
+                        <tr>
+                        {% for model in row %}
+                            <td><a href="{{ path('catalog_partsgroup_select', {'modelId': model.id}) }}">{{ model.name }}</a></td>
+                        {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+
+            </div>
+            <div class="clear"> </div>
+        </div>
+
+
+    </div>
+{% endblock %}
