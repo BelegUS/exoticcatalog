@@ -31,6 +31,7 @@
                         <th>{{ 'Required qnt.'|trans }}</th>
                         <th>{{ 'Name'|trans }}</th>
                         <th>{{ 'Price'|trans }}</th>
+                        <th>{{ 'Quantity'|trans }}</th>
                     </tr>
                 {% for part in parts %}
                     <tr>
@@ -38,7 +39,8 @@
                         <td>{{ part.partNumber }}</td>
                         <td>{{ part.quantity }}</td>
                         <td>{{ part.name }}</td>
-                        <td>{{ part.price }}</td>
+                        <td>{{ part.getActualPriceText(exchangeRates) }}</td>
+                        <td><input type="number" id="{{ part.id }}_quantity" name="quantity" min="1" value="1" size ="2"></td>
                         <td><a href="" class="addToCart" id="{{ part.id }}">{{ 'Add to cart'|trans }}</a></td>
                     </tr>
                 {% endfor %}
@@ -58,23 +60,24 @@
 {{ parent() }}
 <script type="text/javascript">
 
-function addToCartButtonPressed(id){
-    var url = '{{ path('ajax_add_part_to_cart', {'partId': 'id'}) }}'; 
+function addToCartButtonPressed(id, quantityValue){
+    var url = '{{ path('ajax_add_part_to_cart', {'partId': 'id', 'quantity': 'quantityValue'}) }}'; 
     url = url.replace("id", id);
-    $.post(url,               
-            function(response){
-                    if(response.code == 200 && response.success){
-                    }
-
-    }, "json");    
+    url = url.replace("quantityValue", quantityValue);
+            $.ajax({
+          url: url,
+          cache: false,
+          success: function(result){
+             $("#cartContent").load('{{ path('catalog_my_cart') }}');
+          }
+        });
 }
 
 $(document).ready(function() {     
   $('.addToCart').on('click', function(event){
         event.preventDefault();
-        addToCartButtonPressed(this.id);
-        $("#cartContent").load('{{ path('catalog_my_cart') }}');
-        //$("#cartContent").load('{{ path('catalog_my_cart') }}');
+        quantityValue = document.getElementById(this.id+'_quantity').value;
+        addToCartButtonPressed(this.id, quantityValue);
     });
 });
 

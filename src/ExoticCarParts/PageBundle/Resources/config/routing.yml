@@ -57,6 +57,5 @@ catalog_my_cart:
     defaults: { _controller: PageBundle:Catalog:myCart }  
 
 ajax_add_part_to_cart:
-    pattern:  /{_locale}/cart/add_part/{partId}
-    defaults: { _controller: PageBundle:Catalog:ajaxAddPartToCart }
-    
+    pattern:  /{_locale}/cart/add_part/{partId}/{quantity}
+    defaults: { _controller: PageBundle:Catalog:ajaxAddPartToCart }  

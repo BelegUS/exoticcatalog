@@ -57,47 +57,33 @@ class CatalogController extends Controller {
     {
         $em = $this->getDoctrine()->getManager();
 
-        $exchangeRates = array();
-        $currencyXml = simplexml_load_file("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
-        foreach ($currencyXml->Cube->Cube->Cube as $rate) {
-            if ($rate["currency"] == 'USD') {
-                $exchangeRates['euro'] = (1 / floatval($rate["rate"]));
-            } else if ($rate["currency"] == 'PLN') {
-                $exchangeRates['zloty'] = $rate["rate"];
-            }
-        }
-
         $parts = $em->getRepository('CrawlerBundle:Part')->findByPartsGroup($partsGroupId);
-        foreach ($parts as $part) {
-            if (floatval($part->getPrice()) != 0) {
-                $part->setPrice($this->calculatePrice($part->getPrice(), $exchangeRates));
-            }
-        }
 
         $partsGroupRelativeImagePath = $em->getRepository('CrawlerBundle:PartsGroup')->findOneById($partsGroupId)->getImagePath();
 
         $partsGroupAssetImagePath = 'assets/images/catalog/' . $partsGroupRelativeImagePath;
+        
+        $exchangeRates = $this->get('exchange_rates')->getExchangeRates();        
 
         return $this->render('PageBundle:Pages/Catalog:partSelect.html.twig', array(
-                    'parts' => $parts, 'partsGroupImage' => $partsGroupAssetImagePath
+                    'parts' => $parts, 'partsGroupImage' => $partsGroupAssetImagePath, 'exchangeRates' => $exchangeRates
         ));
     }
 
-    private function calculatePrice($partPriceInUSD, $exchangeRates)
-    {
-        $partPriceInEuro = $exchangeRates['euro'] * $partPriceInUSD;
-        $partPriceInZloty = $exchangeRates['zloty'] * $partPriceInEuro;
-        return round($partPriceInEuro, 2) . '€ / ' . round($partPriceInUSD, 2) . '$ / ' . round($partPriceInZloty, 2) . 'zl';
-    }
-
-    
     public function myCartAction() {
+        $em = $this->getDoctrine()->getManager();
+        
         $session = $this->getRequest()->getSession();
-        $cart = $session->get('cart', array());
-        return $this->render('PageBundle:Layout:my_cart.html.twig', array('cart' => $cart));
+        $partIds = $session->get('cart', array());
+        
+        $cart = $em->getRepository('CrawlerBundle:Part')->findById($partIds);
+        
+        $exchangeRates = $this->get('exchange_rates')->getExchangeRates(); 
+        
+        return $this->render('PageBundle:Layout:my_cart.html.twig', array('cart' => $cart, 'exchangeRates' => $exchangeRates));
     }
     
-    public function ajaxAddPartToCartAction($partId)
+    public function ajaxAddPartToCartAction($partId, $quantity)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -107,9 +93,11 @@ class CatalogController extends Controller {
 
             $cart = $session->get('cart', array());
             
-            $cart[] = $part;
+            $cart[] = $part->getId();
+            //$cart[]['quantity'] = $quantity;
 
             $session->set('cart', $cart);
+            $session->save();
 
             return new JsonResponse(array('success' => true));
         } else {

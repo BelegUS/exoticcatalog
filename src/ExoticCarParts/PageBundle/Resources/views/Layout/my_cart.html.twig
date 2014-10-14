@@ -1,12 +1,48 @@
 <div id="cartContent">
-{% if cart %}
-    
-{% for part in cart %}
-   
-    {{ part.name }}<br>
+    <h3>{{ 'cart'|trans }}</h3>
+    {% if cart %}
+        {% set previousBrandName = '' %}
+        {% set previousModelName = '' %}
+        {% set previousPartsGroupName = '' %}
+
+        <ul>
+
+            {% for part in cart %}
+                {% if loop.first == false %}
+                    {% if part.partsgroup.model.brand.name != previousBrandName  %}
+                    </ul></li>
+                {% endif %}
+                {% if part.partsgroup.model.name != previousModelName  %}
+            </ul></li>
+        {% endif %}
+        {% if part.partsgroup.name != previousPartsGroupName  %}
+    </ul></li>
+{% endif %}   
+{% endif %}
+
+{% if part.partsgroup.model.brand.name != previousBrandName  %}
+    <li> {{ part.partsGroup.model.brand.name }} <ul>
+        {% endif %}
+        {% if part.partsgroup.model.name != previousModelName  %}
+            <li> {{ part.partsGroup.model.name }} <ul>
+                {% endif %}
+                {% if part.partsgroup.name != previousPartsGroupName  %}
+                    <li> {{ part.partsGroup.name }} <ul class="partList">
+                        {% endif %}   
+                        <li> {{ part.name }} - {{part.getActualPriceText(exchangeRates) }}</li>
+
+                        {% if loop.last == true %}
+                        </ul></li>
+                </ul></li>
+        </ul></li>
+    {% endif %}  
+
+{% set previousBrandName = part.partsgroup.model.brand.name %}
+{% set previousModelName = part.partsgroup.model.name %}
+{% set previousPartsGroupName = part.partsgroup.name %}   
 
 {% endfor %}
-
+</ul>
 
 {% endif %}
 </div>

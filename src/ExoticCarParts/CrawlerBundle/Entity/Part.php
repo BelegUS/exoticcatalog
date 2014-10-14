@@ -11,9 +11,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="part")
  * @ORM\Entity
  */
-class Part
-{
-     /**
+class Part {
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -49,22 +49,21 @@ class Part
      * @ORM\Column(name="quantity", type="string", length=50)
      */
     private $quantity;
-    
+
     /**
      * @var string
      * 
      * @ORM\Column(name="price", type="string", length=100)
      */
     private $price;
-    
+
     /**
      * @var PartsGroup
      * 
      * @ORM\ManyToOne(targetEntity="PartsGroup", inversedBy="parts")
      * @ORM\JoinColumn(name="partsgroup_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    protected $partsGroup;       
-
+    protected $partsGroup;
 
     /**
      * Get id
@@ -168,18 +167,39 @@ class Part
         return $this->quantity;
     }
 
-    
     public function getPrice()
     {
         return $this->price;
+    }
+
+    public function getCalculatedPrices($exchangeRates)
+    {
+
+        if (floatval($this->getPrice()) != 0) {
+            $partPrice['euro'] = round($exchangeRates['euro'] * $this->getPrice(), 2);
+            $partPrice['zloty'] = round($exchangeRates['zloty'] * $partPrice['euro'], 2);
+            $partPrice['dolar'] = round($this->getPrice(), 2);
+            return $partPrice;
+        } else {
+            return false;
+        }
+    }
+    
+    public function getActualPriceText($exchangeRates) {
+        $prices=$this->getCalculatedPrices($exchangeRates);
+        if($prices) {
+            return $prices['euro'] . '€ / ' . $prices['dolar'] . '$ / ' . $prices['zloty'] . 'zl'; 
+        }
+        else {
+            return 'call';
+        }
     }
 
     public function setPrice($price)
     {
         $this->price = $price;
     }
-    
-    
+
     /**
      * Set partsGroup
      *
@@ -202,4 +222,5 @@ class Part
     {
         return $this->partsGroup;
     }
+
 }

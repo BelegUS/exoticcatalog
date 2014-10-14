@@ -15,8 +15,6 @@ namespace ExoticCarParts\CrawlerBundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use Goutte\Client;
-use Gaufrette\Filesystem;
-use Gaufrette\Adapter\Local as LocalAdapter;
 use ExoticCarParts\CrawlerBundle\Entity\Brand;
 use ExoticCarParts\CrawlerBundle\Entity\Model;
 use ExoticCarParts\CrawlerBundle\Entity\PartsGroup;

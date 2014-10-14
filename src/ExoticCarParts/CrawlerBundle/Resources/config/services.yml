@@ -1,8 +1,10 @@
 parameters:
     ricambia_crawler.class: ExoticCarParts\CrawlerBundle\Service\RicambiaCrawler
+    exchange_rates.class: ExoticCarParts\CrawlerBundle\Service\ExchangeRates
 
 services:
     ricambia_crawler:
         class: %ricambia_crawler.class%
         arguments: [ "@doctrine.orm.entity_manager" ]
-
+    exchange_rates:
+        class: %exchange_rates.class%

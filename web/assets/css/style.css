@@ -359,12 +359,18 @@ body{
 
 .feature-table table th{
     text-align: left;
+    padding-bottom: 12px;
+    padding-right: 2px;
+    max-width: 15%;
+}
+
+.feature-table td {
     padding-bottom: 5px;
     padding-right: 2px;
 }
 
-.feature-table table td{
-    margin-right: 2px;
+.feature-table table td input {
+    width:35px;
 }
 
 .btn{
@@ -1359,12 +1365,32 @@ div#auction-nudge-items ul#images-only li div.image-container {
 #map-canvas {
     height: 350px;
     margin: 0px;
-    padding: 0px
+    padding: 0px;
+}
+/*---End-contact----*/
+
+#cartContent {
+   margin: 10px auto;
 }
 
+#cartContent ul {
+    padding-left: 17px;
+}
 
+#cartContent h3 {
+    color: #c0c0c0;
+    font-family: "special";
+    font-size: 2em;
+    font-weight: 900;
+    padding: 0.5em 0;
+    text-align: center;
+    text-transform: uppercase;
+}
 
-/*---End-contact----*/
+.partList {
+    list-style-type: disc;
+    list-style-position: inside;
+}
 
 /*---start-responsive-design----*/
 @media only screen and (max-width: 1440px) and (min-width:1366px) {
