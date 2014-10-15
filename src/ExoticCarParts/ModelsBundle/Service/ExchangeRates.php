@@ -6,7 +6,7 @@
  * @author BelegUS
  */
 
-namespace ExoticCarParts\CrawlerBundle\Service;
+namespace ExoticCarParts\ModelsBundle\Service;
 
 class ExchangeRates {
 

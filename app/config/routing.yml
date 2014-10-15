@@ -1,3 +1,7 @@
+models:
+    resource: "@ModelsBundle/Resources/config/routing.yml"
+    prefix:   /
+
 crawler:
     resource: "@CrawlerBundle/Resources/config/routing.yml"
     prefix:   /

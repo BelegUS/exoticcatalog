@@ -1,6 +1,6 @@
 <?php
 
-namespace ExoticCarParts\CrawlerBundle\Entity;
+namespace ExoticCarParts\ModelsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -113,13 +113,13 @@ class Brand {
         $this->imagePath = $imagePath;
     }
 
-        /**
+     /**
      * Add models
      *
-     * @param \ExoticCarParts\CrawlerBundle\Entity\Model $models
+     * @param \ExoticCarParts\ModelsBundle\Entity\Model $models
      * @return Brand
      */
-    public function addModel(\ExoticCarParts\CrawlerBundle\Entity\Model $models)
+    public function addModel(\ExoticCarParts\ModelsBundle\Entity\Model $models)
     {
         $this->models[] = $models;
 
@@ -129,9 +129,9 @@ class Brand {
     /**
      * Remove models
      *
-     * @param \ExoticCarParts\CrawlerBundle\Entity\Model $models
+     * @param \ExoticCarParts\ModelsBundle\Entity\Model $models
      */
-    public function removeModel(\ExoticCarParts\CrawlerBundle\Entity\Model $models)
+    public function removeModel(\ExoticCarParts\ModelsBundle\Entity\Model $models)
     {
         $this->models->removeElement($models);
     }

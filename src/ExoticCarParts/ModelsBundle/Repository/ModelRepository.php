@@ -1,6 +1,6 @@
 <?php
 
-namespace ExoticCarParts\CrawlerBundle\Repository;
+namespace ExoticCarParts\ModelsBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -11,7 +11,7 @@ class ModelRepository extends EntityRepository {
         $query = $this->getEntityManager()
                 ->createQuery(
                  'SELECT m
-                 FROM CrawlerBundle:Model m
+                 FROM ModelsBundle:Model m
                  WHERE m.brand = :brandId
                  AND m.name = :modelName'
                 )

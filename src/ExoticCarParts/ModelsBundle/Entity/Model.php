@@ -1,6 +1,6 @@
 <?php
 
-namespace ExoticCarParts\CrawlerBundle\Entity;
+namespace ExoticCarParts\ModelsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Model
  *
  * @ORM\Table(name="model")
- * @ORM\Entity(repositoryClass="ExoticCarParts\CrawlerBundle\Repository\ModelRepository")
+ * @ORM\Entity(repositoryClass="ExoticCarParts\ModelsBundle\Repository\ModelRepository")
  */
 class Model
 {
@@ -87,10 +87,10 @@ class Model
     /**
      * Set brand
      *
-     * @param \ExoticCarParts\CrawlerBundle\Entity\Brand $brand
+     * @param \ExoticCarParts\ModelsBundle\Entity\Brand $brand
      * @return Model
      */
-    public function setBrand(\ExoticCarParts\CrawlerBundle\Entity\Brand $brand = null)
+    public function setBrand(\ExoticCarParts\ModelsBundle\Entity\Brand $brand = null)
     {
         $this->brand = $brand;
 
@@ -100,7 +100,7 @@ class Model
     /**
      * Get brand
      *
-     * @return \ExoticCarParts\CrawlerBundle\Entity\Brand 
+     * @return \ExoticCarParts\ModelsBundle\Entity\Brand 
      */
     public function getBrand()
     {
@@ -110,10 +110,10 @@ class Model
     /**
      * Add partsGroups
      *
-     * @param \ExoticCarParts\CrawlerBundle\Entity\PartsGroup $partsGroups
+     * @param \ExoticCarParts\ModelsBundle\Entity\PartsGroup $partsGroups
      * @return Model
      */
-    public function addPartsGroup(\ExoticCarParts\CrawlerBundle\Entity\PartsGroup $partsGroups)
+    public function addPartsGroup(\ExoticCarParts\ModelsBundle\Entity\PartsGroup $partsGroups)
     {
         $this->partsGroups[] = $partsGroups;
 
@@ -123,9 +123,9 @@ class Model
     /**
      * Remove partsGroups
      *
-     * @param \ExoticCarParts\CrawlerBundle\Entity\PartsGroup $partsGroups
+     * @param \ExoticCarParts\ModelsBundle\Entity\PartsGroup $partsGroups
      */
-    public function removePartsGroup(\ExoticCarParts\CrawlerBundle\Entity\PartsGroup $partsGroups)
+    public function removePartsGroup(\ExoticCarParts\ModelsBundle\Entity\PartsGroup $partsGroups)
     {
         $this->partsGroups->removeElement($partsGroups);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ExoticCarParts\CrawlerBundle\Entity;
+namespace ExoticCarParts\ModelsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -203,10 +203,10 @@ class Part {
     /**
      * Set partsGroup
      *
-     * @param \ExoticCarParts\CrawlerBundle\Entity\PartsGroup $partsGroup
+     * @param \ExoticCarParts\ModelsBundle\Entity\PartsGroup $partsGroup
      * @return Part
      */
-    public function setPartsGroup(\ExoticCarParts\CrawlerBundle\Entity\PartsGroup $partsGroup = null)
+    public function setPartsGroup(\ExoticCarParts\ModelsBundle\Entity\PartsGroup $partsGroup = null)
     {
         $this->partsGroup = $partsGroup;
 
@@ -216,7 +216,7 @@ class Part {
     /**
      * Get partsGroup
      *
-     * @return \ExoticCarParts\CrawlerBundle\Entity\PartsGroup 
+     * @return \ExoticCarParts\ModelsBundle\Entity\PartsGroup 
      */
     public function getPartsGroup()
     {

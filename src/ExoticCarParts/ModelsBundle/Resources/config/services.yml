@@ -1,0 +1,4 @@
+services:
+#    models.example:
+#        class: ExoticCarParts\ModelsBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

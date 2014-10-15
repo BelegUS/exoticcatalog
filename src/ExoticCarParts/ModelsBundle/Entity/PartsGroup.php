@@ -1,6 +1,6 @@
 <?php
 
-namespace ExoticCarParts\CrawlerBundle\Entity;
+namespace ExoticCarParts\ModelsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * PartsGroup
  *
  * @ORM\Table(name="parts_group")
- * @ORM\Entity(repositoryClass="ExoticCarParts\CrawlerBundle\Repository\PartsGroupRepository")
+ * @ORM\Entity(repositoryClass="ExoticCarParts\ModelsBundle\Repository\PartsGroupRepository")
  */
 class PartsGroup
 {
@@ -116,10 +116,10 @@ class PartsGroup
     /**
      * Set model
      *
-     * @param \ExoticCarParts\CrawlerBundle\Entity\Model $model
+     * @param \ExoticCarParts\ModelsBundle\Entity\Model $model
      * @return PartsGroup
      */
-    public function setModel(\ExoticCarParts\CrawlerBundle\Entity\Model $model = null)
+    public function setModel(\ExoticCarParts\ModelsBundle\Entity\Model $model = null)
     {
         $this->model = $model;
 
@@ -129,7 +129,7 @@ class PartsGroup
     /**
      * Get model
      *
-     * @return \ExoticCarParts\CrawlerBundle\Entity\Model 
+     * @return \ExoticCarParts\ModelsBundle\Entity\Model 
      */
     public function getModel()
     {
@@ -139,10 +139,10 @@ class PartsGroup
     /**
      * Add part
      *
-     * @param \ExoticCarParts\CrawlerBundle\Entity\Part $part
+     * @param \ExoticCarParts\ModelsBundle\Entity\Part $part
      * @return PartsGroup
      */
-    public function addPart(\ExoticCarParts\CrawlerBundle\Entity\Part $part)
+    public function addPart(\ExoticCarParts\ModelsBundle\Entity\Part $part)
     {
         $this->part[] = $part;
 
@@ -152,9 +152,9 @@ class PartsGroup
     /**
      * Remove part
      *
-     * @param \ExoticCarParts\CrawlerBundle\Entity\Part $part
+     * @param \ExoticCarParts\ModelsBundle\Entity\Part $part
      */
-    public function removePart(\ExoticCarParts\CrawlerBundle\Entity\Part $part)
+    public function removePart(\ExoticCarParts\ModelsBundle\Entity\Part $part)
     {
         $this->part->removeElement($part);
     }

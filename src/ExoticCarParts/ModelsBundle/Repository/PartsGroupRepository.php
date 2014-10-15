@@ -1,6 +1,6 @@
 <?php
 
-namespace ExoticCarParts\CrawlerBundle\Repository;
+namespace ExoticCarParts\ModelsBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -11,7 +11,7 @@ class PartsGroupRepository extends EntityRepository {
         $query = $this->getEntityManager()
                 ->createQuery(
                  'SELECT pg
-                 FROM CrawlerBundle:PartsGroup pg
+                 FROM ModelsBundle:PartsGroup pg
                  WHERE pg.model = :modelId
                  AND pg.name = :partsGroupName'
                 )

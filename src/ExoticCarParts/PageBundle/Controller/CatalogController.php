@@ -8,10 +8,10 @@ use Symfony\Component\Templating\Helper\AssetsHelper;
 use Symfony\Component\Templating\Asset\PathPackage;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
-use ExoticCarParts\CrawlerBundle\Entity\Brand;
-use ExoticCarParts\CrawlerBundle\Entity\Model;
-use ExoticCarParts\CrawlerBundle\Entity\PartsGroup;
-use ExoticCarParts\CrawlerBundle\Entity\Part;
+use ExoticCarParts\ModelsBundle\Entity\Brand;
+use ExoticCarParts\ModelsBundle\Entity\Model;
+use ExoticCarParts\ModelsBundle\Entity\PartsGroup;
+use ExoticCarParts\ModelsBundle\Entity\Part;
 
 class CatalogController extends Controller {
 
@@ -20,7 +20,7 @@ class CatalogController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $brands = $em->getRepository('CrawlerBundle:Brand')->findAll();
+        $brands = $em->getRepository('ModelsBundle:Brand')->findAll();
 
         return $this->render('PageBundle:Pages/Catalog:brandSelect.html.twig', array(
                     'brands' => $brands
@@ -32,7 +32,7 @@ class CatalogController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $models = $em->getRepository('CrawlerBundle:Model')->findByBrand($brandId, ['name' => 'ASC']);
+        $models = $em->getRepository('ModelsBundle:Model')->findByBrand($brandId, ['name' => 'ASC']);
 
         $sortedModels = array_chunk($models, 4);
 
@@ -46,7 +46,7 @@ class CatalogController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $partsGroups = $em->getRepository('CrawlerBundle:PartsGroup')->findByModel($modelId);
+        $partsGroups = $em->getRepository('ModelsBundle:PartsGroup')->findByModel($modelId);
 
         return $this->render('PageBundle:Pages/Catalog:partsGroupSelect.html.twig', array(
                     'partsGroups' => $partsGroups
@@ -57,9 +57,9 @@ class CatalogController extends Controller {
     {
         $em = $this->getDoctrine()->getManager();
 
-        $parts = $em->getRepository('CrawlerBundle:Part')->findByPartsGroup($partsGroupId);
+        $parts = $em->getRepository('ModelsBundle:Part')->findByPartsGroup($partsGroupId);
 
-        $partsGroupRelativeImagePath = $em->getRepository('CrawlerBundle:PartsGroup')->findOneById($partsGroupId)->getImagePath();
+        $partsGroupRelativeImagePath = $em->getRepository('ModelsBundle:PartsGroup')->findOneById($partsGroupId)->getImagePath();
 
         $partsGroupAssetImagePath = 'assets/images/catalog/' . $partsGroupRelativeImagePath;
         
@@ -76,7 +76,7 @@ class CatalogController extends Controller {
         $session = $this->getRequest()->getSession();
         $partIds = $session->get('cart', array());
         
-        $cart = $em->getRepository('CrawlerBundle:Part')->findById($partIds);
+        $cart = $em->getRepository('ModelsBundle:Part')->findById($partIds);
         
         $exchangeRates = $this->get('exchange_rates')->getExchangeRates(); 
         
@@ -85,20 +85,9 @@ class CatalogController extends Controller {
     
     public function ajaxAddPartToCartAction($partId, $quantity)
     {
-        $em = $this->getDoctrine()->getManager();
+        $success = $this->get('cart')->addToCart($partId, $quantity); 
 
-        $part = $em->getRepository('CrawlerBundle:Part')->findOneById($partId);
-        if ($part) {
-            $session = $this->getRequest()->getSession();
-
-            $cart = $session->get('cart', array());
-            
-            $cart[] = $part->getId();
-            //$cart[]['quantity'] = $quantity;
-
-            $session->set('cart', $cart);
-            $session->save();
-
+        if($success) {
             return new JsonResponse(array('success' => true));
         } else {
             return new JsonResponse(array('success' => false));
