@@ -37,6 +37,16 @@ class Cart {
         }
         return false;
     }
+    
+    public function getPartsFromCart()
+    {
+        $parts = array();
+            foreach($this->cart as $cartPart) {
+                $parts[]['quantity'] = $cartPart['quantity'];
+                $parts[]['part'] = $this->em->getRepository('ModelsBundle:Part')->findOneById($cartPart['partId']);
+            }
+        return $parts;    
+    }
 
     private function recursive_array_search($needle, $haystack)
     {

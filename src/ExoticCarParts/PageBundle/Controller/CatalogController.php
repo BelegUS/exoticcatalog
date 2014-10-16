@@ -65,18 +65,18 @@ class CatalogController extends Controller {
         
         $exchangeRates = $this->get('exchange_rates')->getExchangeRates();        
 
+        $cart = $this->get('cart')->getPartsFromCart();
+        var_dump($cart[0]);
+        exit();
+        
         return $this->render('PageBundle:Pages/Catalog:partSelect.html.twig', array(
                     'parts' => $parts, 'partsGroupImage' => $partsGroupAssetImagePath, 'exchangeRates' => $exchangeRates
         ));
     }
 
     public function myCartAction() {
-        $em = $this->getDoctrine()->getManager();
         
-        $session = $this->getRequest()->getSession();
-        $partIds = $session->get('cart', array());
-        
-        $cart = $em->getRepository('ModelsBundle:Part')->findById($partIds);
+        $cart = $this->get('cart')->getPartsFromCart();
         
         $exchangeRates = $this->get('exchange_rates')->getExchangeRates(); 
         

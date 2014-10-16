@@ -7,29 +7,29 @@
 
         <ul>
 
-            {% for part in cart %}
+            {% for item in cart %}
                 {% if loop.first == false %}
-                    {% if part.partsgroup.model.brand.name != previousBrandName  %}
+                    {% if item['part'].partsgroup.model.brand.name != previousBrandName  %}
                     </ul></li>
                 {% endif %}
-                {% if part.partsgroup.model.name != previousModelName  %}
+                {% if item['part'].partsgroup.model.name != previousModelName  %}
             </ul></li>
         {% endif %}
-        {% if part.partsgroup.name != previousPartsGroupName  %}
+        {% if item['part'].partsgroup.name != previousPartsGroupName  %}
     </ul></li>
 {% endif %}   
 {% endif %}
 
-{% if part.partsgroup.model.brand.name != previousBrandName  %}
-    <li> {{ part.partsGroup.model.brand.name }} <ul>
+{% if item['part'].partsgroup.model.brand.name != previousBrandName  %}
+    <li> {{ item['part'].partsGroup.model.brand.name }} <ul>
         {% endif %}
-        {% if part.partsgroup.model.name != previousModelName  %}
-            <li> {{ part.partsGroup.model.name }} <ul>
+        {% if item['part'].partsgroup.model.name != previousModelName  %}
+            <li> {{ item['part'].partsGroup.model.name }} <ul>
                 {% endif %}
-                {% if part.partsgroup.name != previousPartsGroupName  %}
-                    <li> {{ part.partsGroup.name }} <ul class="partList">
+                {% if item['part'].partsgroup.name != previousPartsGroupName  %}
+                    <li> {{ item['part'].partsGroup.name }} <ul class="partList">
                         {% endif %}   
-                        <li> {{ part.name }} - {{part.getActualPriceText(exchangeRates) }}</li>
+                        <li> {{ item['part'].name }} - {{item['part'].getActualPriceText(exchangeRates) }}</li>
 
                         {% if loop.last == true %}
                         </ul></li>
@@ -37,9 +37,9 @@
         </ul></li>
     {% endif %}  
 
-{% set previousBrandName = part.partsgroup.model.brand.name %}
-{% set previousModelName = part.partsgroup.model.name %}
-{% set previousPartsGroupName = part.partsgroup.name %}   
+{% set previousBrandName = item['part'].partsgroup.model.brand.name %}
+{% set previousModelName = item['part'].partsgroup.model.name %}
+{% set previousPartsGroupName = item['part'].partsgroup.name %}   
 
 {% endfor %}
 </ul>
