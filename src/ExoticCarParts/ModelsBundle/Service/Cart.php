@@ -21,7 +21,7 @@ class Cart {
 
     public function addToCart($partId, $quantity)
     {
-        $part = $this->em->getRepository('ModelsBundle:Part')->findOneById($partId);
+        $part = $this->em->getRepository('ModelsBundle:Part')->find($partId);
         if ($part) {
             $index = $this->recursive_array_search($partId, $this->cart);
             if ($index !== false) {
@@ -41,10 +41,14 @@ class Cart {
     public function getPartsFromCart()
     {
         $parts = array();
-            foreach($this->cart as $cartPart) {
-                $parts[]['quantity'] = $cartPart['quantity'];
-                $parts[]['part'] = $this->em->getRepository('ModelsBundle:Part')->findOneById($cartPart['partId']);
-            }
+        $repository = $this->em->getRepository('ModelsBundle:Part');
+        foreach($this->cart as $cartPart) {
+            $parts[]= array(
+                'quantity' => $cartPart['quantity'],
+                'part'=> $repository->find($cartPart['partId'])
+            );
+        }
+        
         return $parts;    
     }
 

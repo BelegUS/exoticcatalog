@@ -53,15 +53,12 @@ class CatalogController extends Controller {
         ));
     }
 
-    public function partSelectAction($partsGroupId)
+    public function partSelectAction(PartsGroup $partsGroup)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $parts = $em->getRepository('ModelsBundle:Part')->findByPartsGroup($partsGroupId);
-
-        $partsGroupRelativeImagePath = $em->getRepository('ModelsBundle:PartsGroup')->findOneById($partsGroupId)->getImagePath();
-
-        $partsGroupAssetImagePath = 'assets/images/catalog/' . $partsGroupRelativeImagePath;
+        $parts = $em->getRepository('ModelsBundle:Part')->findByPartsGroup($partsGroup);
+        $partsGroupAssetImagePath = 'assets/images/catalog/' . $partsGroup->getImagePath();
         
         $exchangeRates = $this->get('exchange_rates')->getExchangeRates();        
 
@@ -70,7 +67,9 @@ class CatalogController extends Controller {
         exit();
         
         return $this->render('PageBundle:Pages/Catalog:partSelect.html.twig', array(
-                    'parts' => $parts, 'partsGroupImage' => $partsGroupAssetImagePath, 'exchangeRates' => $exchangeRates
+            'parts' => $parts,
+            'partsGroupImage' => $partsGroupAssetImagePath,
+            'exchangeRates' => $exchangeRates
         ));
     }
 
