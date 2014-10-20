@@ -1325,7 +1325,7 @@ div#auction-nudge-items ul#images-only li div.image-container {
     width: 95%;
     min-height: 250px;
 }
-.contact-form input[type="submit"]{
+.contact-form input[type="submit"], button[type="submit"]{
     background: #fd2c2f;
     padding: 0.8em;
     display: block;

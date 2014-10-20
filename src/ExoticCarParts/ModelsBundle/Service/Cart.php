@@ -51,7 +51,7 @@ class Cart {
         
         return $parts;    
     }
-
+    
     private function recursive_array_search($needle, $haystack)
     {
         foreach ($haystack as $key => $value) {

@@ -29,7 +29,7 @@
                 {% if item['part'].partsgroup.name != previousPartsGroupName  %}
                     <li> {{ item['part'].partsGroup.name }} <ul class="partList">
                         {% endif %}   
-                        <li> {{ item['part'].name }} - {{item['part'].getActualPriceText(exchangeRates) }}</li>
+                        <li> {{ item['quantity'] }} x {{ item['part'].name }} - {{item['part'].getActualPriceText(exchangeRates, item['quantity']) }}</li>
 
                         {% if loop.last == true %}
                         </ul></li>
@@ -43,6 +43,18 @@
 
 {% endfor %}
 </ul>
+<div class="contact-form">
+{{ form_start(form) }}
+    {{ form_errors(form) }}
 
+    <div class="text-box">{{ form_widget(form.name, {'attr': {'placeholder': 'imie'|trans } }) }}</div>
+    <div class="text-box">{{ form_widget(form.email, {'attr': {'placeholder': 'emailNadawcy'|trans } }) }}</div>
+    <div class="text-box">{{ form_widget(form.phone, {'attr': {'placeholder': 'telefon'|trans } }) }}</div>
+    <div class="clear"> </div>
+    <div class="textarea-box">{{ form_widget(form.message, {'attr': {'placeholder': 'trescWiadomosci'|trans } }) }}</div>
+    <div class="clear"> </div>
+    {{ form_widget(form.send, { 'label': 'wyslij'|trans }) }}
+{{ form_end(form) }}
+</div>
 {% endif %}
 </div>

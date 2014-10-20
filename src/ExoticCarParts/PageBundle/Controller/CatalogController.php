@@ -53,19 +53,17 @@ class CatalogController extends Controller {
         ));
     }
 
-    public function partSelectAction(PartsGroup $partsGroup)
+    public function partSelectAction($partsGroupId)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $parts = $em->getRepository('ModelsBundle:Part')->findByPartsGroup($partsGroup);
-        $partsGroupAssetImagePath = 'assets/images/catalog/' . $partsGroup->getImagePath();
+        $parts = $em->getRepository('ModelsBundle:Part')->findByPartsGroup($partsGroupId);
+        
+        $relativeImagePath = $parts[0]->getPartsGroup()->getImagePath();
+        $partsGroupAssetImagePath = 'assets/images/catalog/' . $relativeImagePath;
         
         $exchangeRates = $this->get('exchange_rates')->getExchangeRates();        
 
-        $cart = $this->get('cart')->getPartsFromCart();
-        var_dump($cart[0]);
-        exit();
-        
         return $this->render('PageBundle:Pages/Catalog:partSelect.html.twig', array(
             'parts' => $parts,
             'partsGroupImage' => $partsGroupAssetImagePath,
@@ -79,7 +77,22 @@ class CatalogController extends Controller {
         
         $exchangeRates = $this->get('exchange_rates')->getExchangeRates(); 
         
-        return $this->render('PageBundle:Layout:my_cart.html.twig', array('cart' => $cart, 'exchangeRates' => $exchangeRates));
+    $form = $this->createFormBuilder()
+        ->add('name', 'text')
+        ->add('email', 'email')
+        ->add('phone', 'number')    
+        ->add('message', 'textarea')
+        ->add('send', 'submit')
+        ->getForm();
+
+    $form->handleRequest($this->getRequest());
+
+    if ($form->isValid()) {
+        // data is an array with "name", "email", and "message" keys
+        $data = $form->getData();
+    }        
+        
+        return $this->render('PageBundle:Layout:my_cart.html.twig', array('cart' => $cart, 'exchangeRates' => $exchangeRates, 'form' => $form->createView()));
     }
     
     public function ajaxAddPartToCartAction($partId, $quantity)

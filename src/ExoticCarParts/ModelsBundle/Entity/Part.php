@@ -185,10 +185,10 @@ class Part {
         }
     }
     
-    public function getActualPriceText($exchangeRates) {
+    public function getActualPriceText($exchangeRates, $quantity) {
         $prices=$this->getCalculatedPrices($exchangeRates);
         if($prices) {
-            return $prices['euro'] . '€ / ' . $prices['dolar'] . '$ / ' . $prices['zloty'] . 'zl'; 
+            return $quantity*$prices['euro'] . '€ / ' . $quantity*$prices['dolar'] . '$ / ' . $quantity*$prices['zloty'] . 'zl'; 
         }
         else {
             return 'call';
