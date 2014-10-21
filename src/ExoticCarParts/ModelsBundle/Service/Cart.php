@@ -25,10 +25,10 @@ class Cart {
         if ($part) {
             $index = $this->recursive_array_search($partId, $this->cart);
             if ($index !== false) {
-                $this->cart[$index]['quantity'] += (int)$quantity;
+                $this->cart[$index]['quantity'] += (int) $quantity;
             } else {
                 $partToSave['partId'] = $partId;
-                $partToSave['quantity'] = (int)$quantity;
+                $partToSave['quantity'] = (int) $quantity;
                 $this->cart[] = $partToSave;
             }
             $this->session->set('cart', $this->cart);
@@ -37,21 +37,34 @@ class Cart {
         }
         return false;
     }
-    
+
+    public function removeFromCart($partId)
+    {
+        $index = $this->recursive_array_search($partId, $this->cart);
+        if ($index !== false) {
+            unset($this->cart[$index]);
+            $this->cart = array_values($this->cart);
+            $this->session->set('cart', $this->cart);
+            $this->session->save();
+            return true;
+        }
+        return false;
+    }
+
     public function getPartsFromCart()
     {
         $parts = array();
         $repository = $this->em->getRepository('ModelsBundle:Part');
-        foreach($this->cart as $cartPart) {
-            $parts[]= array(
+        foreach ($this->cart as $cartPart) {
+            $parts[] = array(
                 'quantity' => $cartPart['quantity'],
-                'part'=> $repository->find($cartPart['partId'])
+                'part' => $repository->find($cartPart['partId'])
             );
         }
-        
-        return $parts;    
+
+        return $parts;
     }
-    
+
     private function recursive_array_search($needle, $haystack)
     {
         foreach ($haystack as $key => $value) {

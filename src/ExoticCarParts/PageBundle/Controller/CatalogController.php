@@ -105,5 +105,16 @@ class CatalogController extends Controller {
             return new JsonResponse(array('success' => false));
         }
     }
+    
+    public function ajaxRemovePartFromCartAction($partId)
+    {
+        $success = $this->get('cart')->removeFromCart($partId); 
+
+        if($success) {
+            return new JsonResponse(array('success' => true));
+        } else {
+            return new JsonResponse(array('success' => false));
+        }
+    }    
 
 }

@@ -1299,7 +1299,7 @@ div#auction-nudge-items ul#images-only li div.image-container {
     width:33%;
     margin-bottom: 0.5em;
 }
-.text-box input, .text-box select, .textarea-box textarea{
+.text-box input, .text-box select, .textarea-box textarea {
     width: 90%;
     background: #F5F5F5;
     font-family: 'open_sansregular';
@@ -1325,6 +1325,11 @@ div#auction-nudge-items ul#images-only li div.image-container {
     width: 95%;
     min-height: 250px;
 }
+
+#small-textarea-box textarea{
+    min-height: 30px;
+}
+
 .contact-form input[type="submit"], button[type="submit"]{
     background: #fd2c2f;
     padding: 0.8em;
@@ -1349,6 +1354,11 @@ div#auction-nudge-items ul#images-only li div.image-container {
 .contact-form input[type="submit"]:hover{
     background:#fb424f;
 }
+
+#widened-send-button input[type="submit"], button[type="submit"] {
+    width: 103%;
+}
+
 /*Kolorwanie informacji o miswalidacji */
 #result{
     font-size: 1.2em;

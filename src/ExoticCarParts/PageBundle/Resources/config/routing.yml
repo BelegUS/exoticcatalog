@@ -59,3 +59,7 @@ catalog_my_cart:
 ajax_add_part_to_cart:
     pattern:  /{_locale}/cart/add_part/{partId}/{quantity}
     defaults: { _controller: PageBundle:Catalog:ajaxAddPartToCart }  
+    
+ajax_remove_part_from_cart:
+    pattern:  /{_locale}/cart/remove_part/{partId}
+    defaults: { _controller: PageBundle:Catalog:ajaxRemovePartFromCart }      

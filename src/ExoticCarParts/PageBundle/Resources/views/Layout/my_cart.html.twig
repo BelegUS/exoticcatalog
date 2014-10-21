@@ -29,7 +29,8 @@
                 {% if item['part'].partsgroup.name != previousPartsGroupName  %}
                     <li> {{ item['part'].partsGroup.name }} <ul class="partList">
                         {% endif %}   
-                        <li> {{ item['quantity'] }} x {{ item['part'].name }} - {{item['part'].getActualPriceText(exchangeRates, item['quantity']) }}</li>
+                        <li> {{ item['quantity'] }} x {{ item['part'].name }} - {{item['part'].getActualPriceText(exchangeRates, item['quantity']) }} <a href="" class="removeFromCart" id="{{ item['part'].id }}">{{ 'removeFromCart'|trans }}</a></li>
+                        
 
                         {% if loop.last == true %}
                         </ul></li>
@@ -51,10 +52,34 @@
     <div class="text-box">{{ form_widget(form.email, {'attr': {'placeholder': 'emailNadawcy'|trans } }) }}</div>
     <div class="text-box">{{ form_widget(form.phone, {'attr': {'placeholder': 'telefon'|trans } }) }}</div>
     <div class="clear"> </div>
-    <div class="textarea-box">{{ form_widget(form.message, {'attr': {'placeholder': 'trescWiadomosci'|trans } }) }}</div>
+    <div class="textarea-box" id="small-textarea-box">{{ form_widget(form.message, {'attr': {'placeholder': 'trescWiadomosci'|trans } }) }}</div>
     <div class="clear"> </div>
-    {{ form_widget(form.send, { 'label': 'wyslij'|trans }) }}
+    {{ form_widget(form.send, { 'label': 'wyslij'|trans, 'id': 'widened-send-button' }) }}
 {{ form_end(form) }}
 </div>
 {% endif %}
 </div>
+{% block javascripts %}
+<script type="text/javascript">
+
+function removeFromCartButtonPressed(id){
+    var url = '{{ path('ajax_remove_part_from_cart', {'partId': 'id'}) }}'; 
+    url = url.replace("id", id);
+            $.ajax({
+          url: url,
+          cache: false,
+          success: function(result){
+             $("#cartContent").load('{{ path('catalog_my_cart') }}');
+          }
+        });
+}
+
+$(document).ready(function() {     
+  $('.removeFromCart').on('click', function(event){
+        event.preventDefault();
+        removeFromCartButtonPressed(this.id);
+    });
+});
+
+</script>
+{% endblock %}
