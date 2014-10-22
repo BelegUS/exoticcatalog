@@ -77,20 +77,21 @@ class CatalogController extends Controller {
         
         $exchangeRates = $this->get('exchange_rates')->getExchangeRates(); 
         
-    $form = $this->createFormBuilder()
-        ->add('name', 'text')
-        ->add('email', 'email')
-        ->add('phone', 'number')    
-        ->add('message', 'textarea')
-        ->add('send', 'submit')
-        ->getForm();
+                $form = $this->createFormBuilder()
+                ->setAction($this->generateUrl('catalog_cart_send'))
+                ->add('name', 'text')
+                ->add('email', 'email')
+                ->add('phone', 'number')
+                ->add('message', 'textarea')
+                ->add('send', 'submit')
+                ->getForm();
 
-    $form->handleRequest($this->getRequest());
-
-    if ($form->isValid()) {
-        // data is an array with "name", "email", and "message" keys
-        $data = $form->getData();
-    }        
+//        $form->handleRequest($this->getRequest());
+//
+//    if ($form->isValid()) {
+//        // data is an array with "name", "email", and "message" keys
+//        $data = $form->getData();
+//    }        
         
         return $this->render('PageBundle:Layout:my_cart.html.twig', array('cart' => $cart, 'exchangeRates' => $exchangeRates, 'form' => $form->createView()));
     }
@@ -115,6 +116,30 @@ class CatalogController extends Controller {
         } else {
             return new JsonResponse(array('success' => false));
         }
-    }    
+    }
+    
+    public function ajaxCartSendAction()
+    {
+        $params = $this->getRequest()->request->all()['form'];
+
+        $cart = $this->get('cart')->getPartsFromCart();
+        
+        $message = \Swift_Message::newInstance()
+                ->setSubject('ECP - new mail from ' . $params['email'])
+                ->setFrom('contact@exoticcarparts.de')
+                ->setTo('contact@exoticcarparts.de')
+                ->setReplyTo($params['email'])
+                ->setBody(
+                $this->renderView(
+                        'PageBundle:Pages:cart_mail.txt.twig', array('params' => $params, 'cart' => $cart)
+                )
+        );
+        $this->get('mailer')->send($message);
+
+        $return = array("responseCode" => 200, "success" => true);
+
+        $return = json_encode($return); //jscon encode the array
+        return new Response($return, 200, array('Content-Type' => 'application/json'));        
+    }
 
 }

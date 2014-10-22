@@ -1402,6 +1402,11 @@ div#auction-nudge-items ul#images-only li div.image-container {
     list-style-position: inside;
 }
 
+#cartSendResult{
+    font-size: 1.2em;
+    text-align: center;
+}
+
 /*---start-responsive-design----*/
 @media only screen and (max-width: 1440px) and (min-width:1366px) {
     .wrap{

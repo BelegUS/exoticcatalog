@@ -1,0 +1,21 @@
+You've got a new Message.
+From: {{ params.name }}
+Phone: {{ params.phone }}
+Email: {{ params.email }}
+
+Client is asking about Parts:
+
+{% for item in cart %}
+Brand: {{ item['part'].partsgroup.model.brand.name }}
+Model: {{ item['part'].partsgroup.model.name }}
+Parts group: {{ item['part'].partsgroup.name }}
+Part name: {{ item['part'].name }}
+Part catalogue number: {{ item['part'].partNumber }}
+Quantity needed: {{ item['quantity'] }} 
+
+{% endfor %}
+
+Message from Client:
+    {{ params.message }}
+
+

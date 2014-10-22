@@ -140,4 +140,7 @@
   
 "katalog" : "Part Catalogue"
   
-"cart": "My cart"
+"cart": "Warenkorb"
+
+"removeFromCart": "Entfernen"
+"addToCart": "In Warenkorb"

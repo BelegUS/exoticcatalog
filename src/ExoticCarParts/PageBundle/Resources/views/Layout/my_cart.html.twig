@@ -45,7 +45,7 @@
 {% endfor %}
 </ul>
 <div class="contact-form">
-{{ form_start(form) }}
+    {{ form_start(form, {'attr': {'id': 'cartContactForm'}}) }}
     {{ form_errors(form) }}
 
     <div class="text-box">{{ form_widget(form.name, {'attr': {'placeholder': 'imie'|trans } }) }}</div>
@@ -56,6 +56,7 @@
     <div class="clear"> </div>
     {{ form_widget(form.send, { 'label': 'wyslij'|trans, 'id': 'widened-send-button' }) }}
 {{ form_end(form) }}
+<div id="cartSendResult"></div>
 </div>
 {% endif %}
 </div>
@@ -80,6 +81,29 @@ $(document).ready(function() {
         removeFromCartButtonPressed(this.id);
     });
 });
+
+$(function() {
+    $('#cartContactForm').submit(function(e) {
+        // Stop the form actually posting
+        e.preventDefault();
+        var url = $("#cartContactForm").attr("action");
+        //If reason of Contact: "other", then remove() unnecesary part-related values
+        // Send the request
+        $.post(url,
+                $("#cartContactForm").serialize(),
+                function(data) {
+
+                if(data.responseCode==200 ){           
+                    $('#cartSendResult').html('Sent');
+                    $('#cartSendResult').css("color","green");
+                }    
+
+                });
+        //Do not allow to click the button again 
+        $('#widened-send-button').hide();
+    });
+});
+
 
 </script>
 {% endblock %}

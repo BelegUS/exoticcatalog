@@ -46,7 +46,15 @@ class DefaultController extends Controller {
 
     public function kontaktAction()
     {
-        return $this->render('PageBundle:Pages:kontakt.html.twig');
+//            $form = $this->createFormBuilder()
+//                ->add('name', 'text')
+//                ->add('email', 'email')
+//                ->add('phone', 'number')
+//                ->add('message', 'textarea')
+//                ->add('send', 'submit')
+//                ->getForm();
+        
+        return $this->render('PageBundle:Pages:kontakt.html.twig'/*, array('form' => $form->createView())*/);
     }
 
     public function kontaktSendAction()

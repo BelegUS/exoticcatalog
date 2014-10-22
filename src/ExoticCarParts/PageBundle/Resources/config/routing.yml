@@ -62,4 +62,9 @@ ajax_add_part_to_cart:
     
 ajax_remove_part_from_cart:
     pattern:  /{_locale}/cart/remove_part/{partId}
-    defaults: { _controller: PageBundle:Catalog:ajaxRemovePartFromCart }      
+    defaults: { _controller: PageBundle:Catalog:ajaxRemovePartFromCart } 
+    
+catalog_cart_send:
+    pattern: /{_locale}/cart/send
+    defaults: { _controller: PageBundle:Catalog:ajaxCartSend }
+    methods: [POST]
