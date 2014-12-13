@@ -24,21 +24,21 @@
 
             <div class="feature-tables">
                 <div class="feature-table">
-                <table>
+                <table id="partsTable" class="large-only" cellspacing="0">
                     <tr>
+                        <th>{{ 'Name'|trans }}</th>
                         <th>{{ 'Number'|trans }}</th>
                         <th>{{ 'Serial no.'|trans }}</th>
                         <th>{{ 'Required qnt.'|trans }}</th>
-                        <th>{{ 'Name'|trans }}</th>
                         <th>{{ 'Price'|trans }}</th>
                         <th>{{ 'Quantity'|trans }}</th>
                     </tr>
                 {% for part in parts %}
                     <tr>
+                        <td>{{ part.name }}</td>
                         <td>{{ part.onImageNumber }}</td>
                         <td>{{ part.partNumber }}</td>
                         <td>{{ part.quantity }}</td>
-                        <td>{{ part.name }}</td>
                         <td>{{ part.getActualPriceText(exchangeRates, 1) }}</td>
                         <td><input type="number" id="{{ part.id }}_quantity" name="quantity" min="1" value="1" size ="2"></td>
                         <td><a href="" class="addToCart" id="{{ part.id }}">{{ 'addToCart'|trans }}</a></td>
@@ -79,6 +79,8 @@ $(document).ready(function() {
         quantityValue = document.getElementById(this.id+'_quantity').value;
         addToCartButtonPressed(this.id, quantityValue);
     });
+   
+  $('#partsTable').stacktable({myClass:'stacktable small-only'});  
 });
 
 </script>

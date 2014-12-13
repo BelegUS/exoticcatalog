@@ -43,7 +43,7 @@ html, body {
 body{
     background:url(../images/main-bg.jpg);
     font-family: 'open_sansregular';
-    
+
     color: #FFF;    //Default font
 }
 
@@ -235,9 +235,9 @@ body{
     margin-top: 4em;
 }
 
-.feature-grids a:link, a:visited, a:hover, a:active{
+/*.feature-grids a:link, a:visited, a:hover, a:active{
     color:#C0C0C0;
-}
+}*/
 
 /*.feature-grid-head-top{
     margin-left:0.6%;
@@ -1380,7 +1380,7 @@ div#auction-nudge-items ul#images-only li div.image-container {
 /*---End-contact----*/
 
 #cartContent {
-   margin: 10px auto;
+    margin: 10px auto;
 }
 
 #cartContent ul {
@@ -1406,6 +1406,45 @@ div#auction-nudge-items ul#images-only li div.image-container {
     font-size: 1.2em;
     text-align: center;
 }
+
+.modelsContainer {
+   display: -webkit-flex;
+   display: flex;
+/*   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;*/
+   /* You can set flex-wrap and flex-direction individually */
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-flex-wrap: wrap;
+   flex-wrap: wrap;
+   /* Or do it all in one line with flex flow */
+   -webkit-flex-flow: row wrap;
+   flex-flow: row wrap;
+   /* tweak the where items line up on the row */
+   /* valid values are: flex-start, flex-end, space-between, space-around, stretch */
+   -webkit-align-content: flex-end;
+   align-content: flex-end;
+}
+
+.modelsContainer .model {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    min-width: 24%;
+}
+
+/*#horizontalList ul{
+    width: 100%;
+}
+
+#horizontalList li
+{
+    display: inline-block;
+    list-style-type: none;
+    margin-right: 5%;
+    white-space: nowrap;
+}*/
 
 /*---start-responsive-design----*/
 @media only screen and (max-width: 1440px) and (min-width:1366px) {

@@ -19,11 +19,27 @@ $(document).ready(function() {
         // Transition style for menu animations
         transitionEasing: 'ease',
         // Use mouse movement to automatically open/close
-        mouse: true,
+        mouse: false,
         // Use touch swipe events to open/close
         touch: true
     });
     $(".meny-menu").show(); //Show the "Menu" text
+    
+    if(meny.isOpen() === false) {
+        $('.meny-menu').css( 'cursor', 'pointer' );
+    }
+    
+    $( ".meny-menu" ).click(function() {
+        if(meny.isOpen() === false) {
+            meny.open();
+        }
+    });
+    
+    $(".contents").click(function() {
+        if(meny.isOpen() === true) {
+            meny.close();
+        }
+    });    
     
     meny.addEventListener('close', function() {
         

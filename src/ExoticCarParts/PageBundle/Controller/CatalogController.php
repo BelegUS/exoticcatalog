@@ -34,10 +34,10 @@ class CatalogController extends Controller {
 
         $models = $em->getRepository('ModelsBundle:Model')->findByBrand($brandId, ['name' => 'ASC']);
 
-        $sortedModels = array_chunk($models, 4);
+        //$sortedModels = array_chunk($models, 4);
 
         return $this->render('PageBundle:Pages/Catalog:modelSelect.html.twig', array(
-                    'models' => $sortedModels
+                    'models' => $models
         ));
     }
 

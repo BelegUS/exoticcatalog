@@ -11,23 +11,18 @@
                     <label></label><span></span><label></label>
                     <div class="clear"> </div>
 
-                    <h3>{{ models[0][0].brand.name }}</h3>
+                    <h3>{{ models[0].brand.name }}</h3>
                 </div>
             </div>
             <div class="clear"> </div>
-            <div class="feature-tables">
-                <div class="feature-table">
-                    <table>
-                    {% for row in models %}
-                        <tr>
-                        {% for model in row %}
-                            <td><a href="{{ path('catalog_partsgroup_select', {'modelId': model.id}) }}">{{ model.name }}</a></td>
-                        {% endfor %}
-                        </tr>
+            <div class="feature-grid">
+                <div class="feature-grid-center">
+                    <div class="modelsContainer">
+                    {% for model in models %}
+                        <div class="model"><a href="{{ path('catalog_partsgroup_select', {'modelId': model.id}) }}">{{ model.name }}</a></div>
                     {% endfor %}
-                    </table>
+                    </div>
                 </div>
-
             </div>
             <div class="clear"> </div>
         </div>
