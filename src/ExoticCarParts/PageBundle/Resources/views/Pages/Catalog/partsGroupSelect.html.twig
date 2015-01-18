@@ -10,24 +10,21 @@
             <div class="feature-grid-head-top">
                 <label></label><span></span><label></label>
                 <div class="clear"> </div>
-
+                <a href="{{ path('catalog_brand_select') }}">{{ partsGroups[0].model.brand.name }}</a> /
+                <a href="{{ path('catalog_model_select', {'brandId': partsGroups[0].model.brand.id}) }}">{{ partsGroups[0].model.name }}</a>
                 <h3>{{ partsGroups[0].model.name }}</h3>
             </div>
         </div>
         <div class="clear"> </div>
         <div class="feature-grid">
-
             <div class="feature-grid-center">
-                <div class="clear"> </div>
-            </div>
-
-            <div class="feature-grid-center">
-                <ul>
-                {% for partsGroup in partsGroups %}
-                    <li><a href="{{ path('catalog_part_select', {'partsGroupId': partsGroup.id}) }}">{{ partsGroup.name }}</a></li>
-                {% endfor %}
-                </ul>
-
+                <div class="partGroupsContainer">
+                    {% for partsGroup in partsGroups %}
+                        <div class="partGroup">
+                            <a href="{{ path('catalog_part_select', {'partsGroupId': partsGroup.id}) }}"><img src='{{ asset(partsGroup.imagePath, 'catalog_images') }}' alt="" />
+                            {{ partsGroup.name }}</a></div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
         <div class="clear"> </div>

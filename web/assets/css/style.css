@@ -1,6 +1,6 @@
 /* reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, menu, nav, section {display: block;}
 ol,ul{list-style:none;margin:0px;padding:0px;}
 blockquote,q{quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
@@ -167,7 +167,6 @@ body{
     margin-right:0px;
 }
 .top-grid-head{
-    background: url(../images/grid-pic1.jpg) no-repeat 100% 100%;
     background-size: 100%;
     position:relative;
     height: 150px;
@@ -216,11 +215,9 @@ body{
     padding: 0px 0px 1.8em 0;
 }
 .top-grid-head1{
-    background: url(../images/grid-pic2.jpg) no-repeat 100% 100%;
     background-size:100%;
 }
 .top-grid-head3{
-    background: url(../images/grid-pic3.jpg) no-repeat 100% 100%;
     background-size:100%;
 }
 .top-grid-head-icon1 span{
@@ -464,20 +461,12 @@ body{
     color: #C0C0C0;
     display: block;
     text-align: center;
-    transition:0.5 all;
-    -webkit-transition:0.5 all;
-    -moz-transition:0.5 all;
-    -o-transition:0.5 all;
 }
 .project-tag{
     text-align: center;
     color: #C0C0C0;
     font-size: 0.875em;
     line-height: 1.5em;
-    transition:0.5 all;
-    -webkit-transition:0.5 all;
-    -moz-transition:0.5 all;
-    -o-transition:0.5 all;
 }
 .project-name:hover,.project-tag:hover{
     color:#71B6D5;
@@ -1065,7 +1054,6 @@ div#auction-nudge-items ul#images-only li div.image-container {
     overflow: hidden;
     position: relative;
     text-align: center;
-    background: #fff url(../images/bgimg.jpg) no-repeat center center;
 }
 .view .mask,.view .content {
     position: absolute;
@@ -1352,7 +1340,7 @@ div#auction-nudge-items ul#images-only li div.image-container {
     transition-delay: 0.2s;
 }
 .contact-form input[type="submit"]:hover{
-    background:#fb424f;
+    background-color: #fb424f;
 }
 
 #widened-send-button input[type="submit"], button[type="submit"] {
@@ -1410,20 +1398,8 @@ div#auction-nudge-items ul#images-only li div.image-container {
 .modelsContainer {
    display: -webkit-flex;
    display: flex;
-/*   -webkit-align-items: center;
-   align-items: center;
-   -webkit-justify-content: center;
-   justify-content: center;*/
-   /* You can set flex-wrap and flex-direction individually */
-   -webkit-flex-direction: row;
-   flex-direction: row;
-   -webkit-flex-wrap: wrap;
-   flex-wrap: wrap;
-   /* Or do it all in one line with flex flow */
    -webkit-flex-flow: row wrap;
    flex-flow: row wrap;
-   /* tweak the where items line up on the row */
-   /* valid values are: flex-start, flex-end, space-between, space-around, stretch */
    -webkit-align-content: flex-end;
    align-content: flex-end;
 }
@@ -1434,17 +1410,32 @@ div#auction-nudge-items ul#images-only li div.image-container {
     min-width: 24%;
 }
 
-/*#horizontalList ul{
-    width: 100%;
+.partGroupsContainer {
+    text-align: center;
+    word-break: break-all;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-align-content: space-around;
+    align-content: space-around;
+    -webkit-justify-content: center;
+    justify-content: center;
 }
 
-#horizontalList li
-{
-    display: inline-block;
-    list-style-type: none;
-    margin-right: 5%;
-    white-space: nowrap;
-}*/
+.partGroupsContainer .partGroup {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: 24%;
+}
+
+.partGroupsContainer .partGroup img {
+    min-width: 50%;
+}
+
+#partsTable .centeredTd {
+    text-align: center;
+}
 
 /*---start-responsive-design----*/
 @media only screen and (max-width: 1440px) and (min-width:1366px) {
@@ -1524,9 +1515,6 @@ div#auction-nudge-items ul#images-only li div.image-container {
     }
     .top-grid-head{
         background-size: 104%;
-    }
-    .top-grid-head3{
-        background: url(../images/grid-pic3.jpg) no-repeat 100% 100%;
     }
     .feature-grid-head-top label {
         width: 44%;
