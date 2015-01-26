@@ -36,9 +36,9 @@
                 {% for part in parts %}
                     <tr>
                         <td>{{ part.name }}</td>
-                        <td class="centeredTd">{{ part.onImageNumber }}</td>
+                        <td>{{ part.onImageNumber }}</td>
                         <td>{{ part.partNumber }}</td>
-                        <td class="centeredTd">{{ part.quantity }}</td>
+                        <td>{{ part.quantity }}</td>
                         <td>{{ part.getActualPriceText(exchangeRates, 1) }}</td>
                         <td><input type="number" id="{{ part.id }}_quantity" name="quantity" min="1" value="1" size ="2"></td>
                         <td><a href="" class="addToCart" id="{{ part.id }}">{{ 'addToCart'|trans }}</a></td>

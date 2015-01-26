@@ -21,7 +21,7 @@
                 <div class="partGroupsContainer">
                     {% for partsGroup in partsGroups %}
                         <div class="partGroup">
-                            <a href="{{ path('catalog_part_select', {'partsGroupId': partsGroup.id}) }}"><img src='{{ asset(partsGroup.imagePath, 'catalog_images') }}' alt="" />
+                            <a href="{{ path('catalog_part_select', {'partsGroupId': partsGroup.id}) }}"><img class="img-zoom" src='{{ asset(partsGroup.imagePath, 'catalog_images') }}' alt="" />
                             {{ partsGroup.name }}</a></div>
                     {% endfor %}
                 </div>

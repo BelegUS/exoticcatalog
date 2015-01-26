@@ -357,13 +357,15 @@ body{
 .feature-table table th{
     text-align: left;
     padding-bottom: 12px;
-    padding-right: 2px;
     max-width: 15%;
 }
 
 .feature-table td {
     padding-bottom: 5px;
-    padding-right: 2px;
+}
+
+.feature-table td, th {
+    padding-right: 1.2em;
 }
 
 .feature-table table td input {
@@ -1436,6 +1438,22 @@ div#auction-nudge-items ul#images-only li div.image-container {
 #partsTable .centeredTd {
     text-align: center;
 }
+
+.img-zoom {
+    width: 370px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+}
+
+.transition {
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+}
+
 
 /*---start-responsive-design----*/
 @media only screen and (max-width: 1440px) and (min-width:1366px) {

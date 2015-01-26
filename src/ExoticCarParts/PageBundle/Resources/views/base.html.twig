@@ -96,6 +96,16 @@
                 ];
                 var overlay = "{{ asset('assets/images/overlays/03.png') }}";</script>
             <script type="text/javascript" src="{{ asset('assets/js/vegasSettings.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.img-zoom').hover(function() {
+                $(this).addClass('transition');
+
+            }, function() {
+                $(this).removeClass('transition');
+            });
+        });
+    </script>
 {% endblock %}
         </body>
 
