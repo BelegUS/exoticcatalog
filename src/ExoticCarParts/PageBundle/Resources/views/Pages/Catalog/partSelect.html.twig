@@ -3,7 +3,6 @@
 {% block content %}
 <div class="wrap text">
 
-    <!---start-Features---->
     <div class="feature-grids">
 
         <div class="feature-grid-head">
@@ -32,6 +31,7 @@
                         <th>{{ 'Required qnt.'|trans }}</th>
                         <th>{{ 'Price'|trans }}</th>
                         <th>{{ 'Quantity'|trans }}</th>
+                        <th></th>
                     </tr>
                 {% for part in parts %}
                     <tr>
@@ -40,8 +40,8 @@
                         <td>{{ part.partNumber }}</td>
                         <td>{{ part.quantity }}</td>
                         <td>{{ part.getActualPriceText(exchangeRates, 1) }}</td>
-                        <td><input type="number" id="{{ part.id }}_quantity" name="quantity" min="1" value="1" size ="2"></td>
-                        <td><a href="" class="addToCart" id="{{ part.id }}">{{ 'addToCart'|trans }}</a></td>
+                        <td><input type="number" id="quantity_part_{{ part.id }}" min="1" value="1"></td>
+                        <td><a href="" class="addToCart" id="part_{{ part.id }}">{{ 'addToCart'|trans }}</a></td>
                     </tr>
                 {% endfor %}
                 
@@ -58,30 +58,33 @@
 
 {% block javascripts %}
 {{ parent() }}
-<script type="text/javascript">
+    <script type="text/javascript">
+        $('#partsTable').stacktable({myClass: 'stacktable small-only'});
 
-function addToCartButtonPressed(id, quantityValue){
-    var url = '{{ path('ajax_add_part_to_cart', {'partId': 'id', 'quantity': 'quantityValue'}) }}'; 
-    url = url.replace("id", id);
-    url = url.replace("quantityValue", quantityValue);
+        function addToCartButtonPressed(id, quantityValue) {
+            var url = '{{ path('ajax_add_part_to_cart', {'partId': 'id', 'quantity': 'quantityValue'}) }}';
+            url = url.replace("id", id);
+            url = url.replace("quantityValue", quantityValue);
             $.ajax({
-          url: url,
-          cache: false,
-          success: function(result){
-             $("#cartContent").load('{{ path('catalog_my_cart') }}');
-          }
+                url: url,
+                cache: false,
+                success: function (result) {
+                    $("#cartContent").load('{{ path('catalog_my_cart') }}');
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('.addToCart').on('click', function (event) {
+                event.preventDefault();
+                partId = event.target.id;
+                quantityValue = $('input[id="quantity_'+partId+'"]:visible').val();
+                console.log(quantityValue);
+                partIdValue = partId.replace('part_', '');
+                addToCartButtonPressed(partIdValue, quantityValue);
+            });
+
         });
-}
 
-$(document).ready(function() {     
-  $('.addToCart').on('click', function(event){
-        event.preventDefault();
-        quantityValue = document.getElementById(this.id+'_quantity').value;
-        addToCartButtonPressed(this.id, quantityValue);
-    });
-   
-  $('#partsTable').stacktable({myClass:'stacktable small-only'});  
-});
-
-</script>
+    </script>
 {% endblock %}
