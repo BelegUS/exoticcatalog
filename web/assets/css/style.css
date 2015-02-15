@@ -354,18 +354,25 @@ body{
     max-width:100%;
 }
 
+.feature-table table tr:nth-child(even) {
+    background-color: rgba(80, 80, 80, 0.60);
+}
+
+.feature-table table tr:nth-child(odd) {
+    background-color: rgba(29, 29, 29, 0.60);
+}
+
+.feature-table table tr:nth-child(1) {
+    background-color: rgba(80, 40, 42, 0.60);
+}
+
 .feature-table table th{
     text-align: left;
-    padding-bottom: 12px;
     max-width: 15%;
 }
 
-.feature-table td {
-    padding-bottom: 5px;
-}
-
 .feature-table td, th {
-    padding-right: 1.2em;
+    padding: 1.2em;
 }
 
 .feature-table table td input {
