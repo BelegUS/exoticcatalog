@@ -373,6 +373,11 @@ body{
 
 .feature-table td, th {
     padding: 1.2em;
+    border-right: solid 1px rgba(230,230,230,0.85);
+}
+
+.feature-table td:nth-last-child(1), th:nth-last-child(1) {
+    border-right: none;
 }
 
 .feature-table table td input {
