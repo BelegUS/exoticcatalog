@@ -313,13 +313,15 @@ body{
 .feature-grid-center{
     width:75%;
     margin: 0 auto;
+}
 
+.feature-grid-center.image{
+    text-align: center;
 }
 
 .feature-grid-center h1{
     font-size: 1.8em;
     color:#F5F5F5;
-
 }
 
 .feature-grid-right h4{
