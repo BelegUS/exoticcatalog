@@ -25,16 +25,16 @@
                 <div class="feature-table">
                 <table id="partsTable" class="large-only" cellspacing="0">
                     <tr>
-                        <th>{{ 'Name'|trans }}</th>
-                        <th>{{ 'Number'|trans }}</th>
-                        <th>{{ 'Serial no.'|trans }}</th>
-                        <th>{{ 'Required qnt.'|trans }}</th>
-                        <th>{{ 'Price'|trans }}</th>
-                        <th>{{ 'Quantity'|trans }}</th>
+                        <th>{{ 'name'|trans }}</th>
+                        <th>{{ 'number'|trans }}</th>
+                        <th>{{ 'partNumber'|trans }}</th>
+                        <th>{{ 'requiredQuantity'|trans }}</th>
+                        <th>{{ 'price'|trans }}</th>
+                        <th>{{ 'quantity'|trans }}</th>
                         <th></th>
                     </tr>
                 {% for part in parts %}
-                    <tr>
+                    <tr {% if part.partNumber == highlightedPartNumber %} class = "highlighted" {% endif %}>
                         <td>{{ part.name }}</td>
                         <td>{{ part.onImageNumber }}</td>
                         <td>{{ part.partNumber }}</td>

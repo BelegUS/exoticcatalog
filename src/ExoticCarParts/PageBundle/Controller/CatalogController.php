@@ -3,6 +3,8 @@
 namespace ExoticCarParts\PageBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Templating\Helper\AssetsHelper;
 use Symfony\Component\Templating\Asset\PathPackage;
@@ -12,6 +14,7 @@ use ExoticCarParts\ModelsBundle\Entity\Brand;
 use ExoticCarParts\ModelsBundle\Entity\Model;
 use ExoticCarParts\ModelsBundle\Entity\PartsGroup;
 use ExoticCarParts\ModelsBundle\Entity\Part;
+use ExoticCarParts\PageBundle\Form\PartSearchForm;
 
 class CatalogController extends Controller {
 
@@ -22,8 +25,11 @@ class CatalogController extends Controller {
 
         $brands = $em->getRepository('ModelsBundle:Brand')->findAll();
 
+        $searchPartForm = $this->createForm(new PartSearchForm(), null, array(
+            'action' => $this->generateUrl('catalog_part_search')));
+
         return $this->render('PageBundle:Pages/Catalog:brandSelect.html.twig', array(
-                    'brands' => $brands
+                    'brands' => $brands, 'searchPartForm' => $searchPartForm->createView()
         ));
     }
 
@@ -53,7 +59,7 @@ class CatalogController extends Controller {
         ));
     }
 
-    public function partSelectAction($partsGroupId)
+    public function partSelectAction($partsGroupId, $highlightedPartNumber = null)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -67,7 +73,8 @@ class CatalogController extends Controller {
         return $this->render('PageBundle:Pages/Catalog:partSelect.html.twig', array(
             'parts' => $parts,
             'partsGroupImage' => $partsGroupAssetImagePath,
-            'exchangeRates' => $exchangeRates
+            'exchangeRates' => $exchangeRates,
+            'highlightedPartNumber' => $highlightedPartNumber
         ));
     }
 
@@ -86,13 +93,6 @@ class CatalogController extends Controller {
                 ->add('send', 'submit')
                 ->getForm();
 
-//        $form->handleRequest($this->getRequest());
-//
-//    if ($form->isValid()) {
-//        // data is an array with "name", "email", and "message" keys
-//        $data = $form->getData();
-//    }        
-        
         return $this->render('PageBundle:Layout:my_cart.html.twig', array('cart' => $cart, 'exchangeRates' => $exchangeRates, 'form' => $form->createView()));
     }
     
@@ -118,9 +118,9 @@ class CatalogController extends Controller {
         }
     }
     
-    public function ajaxCartSendAction()
+    public function ajaxCartSendAction(Request $request)
     {
-        $params = $this->getRequest()->request->all()['form'];
+        $params = $request->get('form');
 
         $cart = $this->get('cart')->getPartsFromCart();
         
@@ -140,6 +140,23 @@ class CatalogController extends Controller {
 
         $return = json_encode($return); //jscon encode the array
         return new Response($return, 200, array('Content-Type' => 'application/json'));        
+    }
+
+    public function partSearchAction(Request $request)
+    {
+        $searchPartForm = $this->createForm(new PartSearchForm());
+
+        if ($request->getMethod() == 'POST') {
+            $searchPartForm->handleRequest($request);
+            $data = $searchPartForm->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $part = $em->getRepository('ModelsBundle:Part')->findOneByPartNumber($data['partNumber']);
+            if(!empty($part)) {
+                return $this->redirect($this->generateUrl('catalog_part_select', array('partsGroupId'=>$part->getPartsGroup()->getId(), 'highlightedPartNumber'=>$part->getPartNumber())));
+            }
+        }
+        return $this->render('PageBundle:Pages/Catalog:partSearch.html.twig', array('searchPartForm' => $searchPartForm->createView(), 'notFound'=> true));
     }
 
 }

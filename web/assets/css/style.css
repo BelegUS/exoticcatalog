@@ -281,7 +281,7 @@ body{
     display: block;
     padding: 0px 1em;
 }
-.feature-grid-head h3{
+h3{
     text-align: center;
     text-transform: uppercase;
     font-family: 'special';
@@ -366,6 +366,10 @@ body{
 
 .feature-table table tr:nth-child(1) {
     background-color: rgba(80, 40, 42, 0.60);
+}
+
+.feature-table table tr.highlighted {
+    background-color: rgba(0, 80, 15, 0.60);
 }
 
 .feature-table table th{
@@ -1468,6 +1472,26 @@ div#auction-nudge-items ul#images-only li div.image-container {
     transform: scale(2);
 }
 
+.search-part-form {
+
+}
+
+.search-part-form form {
+    margin: auto;
+    width: 60%;
+}
+
+.search-part-form #searchButton {
+    width: 100%;
+}
+
+.search-part-form #partSearchForm_partNumber {
+    width: 294%;
+}
+
+#partNotFound {
+    color: red;
+}
 
 /*---start-responsive-design----*/
 @media only screen and (max-width: 1440px) and (min-width:1366px) {

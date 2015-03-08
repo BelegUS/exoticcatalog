@@ -49,8 +49,8 @@ catalog_partsgroup_select:
     defaults: { _controller: PageBundle:Catalog:partsGroupSelect }    
     
 catalog_part_select:
-    pattern: /{_locale}/catalog/partsgroup/{partsGroupId}
-    defaults: { _controller: PageBundle:Catalog:partSelect }   
+    pattern: /{_locale}/catalog/partsgroup/{partsGroupId}/{highlightedPartNumber}
+    defaults: { _controller: PageBundle:Catalog:partSelect, highlightedPartNumber: null }
 
 catalog_my_cart:
     pattern: /{_locale}/cart
@@ -67,4 +67,9 @@ ajax_remove_part_from_cart:
 catalog_cart_send:
     pattern: /{_locale}/cart/send
     defaults: { _controller: PageBundle:Catalog:ajaxCartSend }
+    methods: [POST]
+
+catalog_part_search:
+    pattern: /{_locale}/catalog/search
+    defaults: { _controller: PageBundle:Catalog:partSearch }
     methods: [POST]

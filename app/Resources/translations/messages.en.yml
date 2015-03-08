@@ -143,3 +143,15 @@
 
 "removeFromCart": "Remove"
 "addToCart": "Add to cart"
+
+"name": "Name"
+"number": "Number"
+"partNumber": "Serial no."
+"requiredQuantity": "Required qnt."
+"price": "Price"
+"quantity": "Quantity"
+
+"selectBrand": "Select brand"
+"searchByPartNumber": "Search by part number"
+
+"partNotFound": "Part number you asked for was not found in our database. Please try again!"
