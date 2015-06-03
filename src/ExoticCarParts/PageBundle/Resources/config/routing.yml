@@ -38,7 +38,11 @@ page_kontakt_send:
 
 catalog_brand_select:
     pattern:  /{_locale}/catalog
-    defaults: { _controller: PageBundle:Catalog:brandSelect }     
+    defaults: { _controller: PageBundle:Catalog:brandSelect }
+
+part_search_slider:
+    pattern:  /{_locale}/catalog
+    defaults: { _controller: PageBundle:Catalog:partSearchSlider }
 
 catalog_model_select:
     pattern: /{_locale}/catalog/brand/{brandId}

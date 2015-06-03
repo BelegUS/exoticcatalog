@@ -33,6 +33,21 @@ class CatalogController extends Controller {
         ));
     }
 
+    public function partSearchSliderAction()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $brands = $em->getRepository('ModelsBundle:Brand')->findAll();
+
+        $searchPartForm = $this->createForm(new PartSearchForm(), null, array(
+            'action' => $this->generateUrl('catalog_part_search')));
+
+        return $this->render('PageBundle:Pages/Catalog:brand_select_content.html.twig', array(
+            'brands' => $brands, 'searchPartForm' => $searchPartForm->createView()
+        ));
+    }
+
     public function modelSelectAction($brandId)
     {
 
