@@ -1,0 +1,32 @@
+<div class="portfolio">
+    <div class="right-protfolio-grids">
+        <h3>{{ 'selectBrand'|trans }}</h3>
+        {% for brand in brands %}
+            <a href="{{ path('catalog_model_select', {'brandId': brand.id}) }}">
+                <div class="right-protfolio-grid">
+
+                    <div class="view view-first">
+                        <img src="{{ asset(brand.imagePath, 'catalog_images') }}" alt=" "/>
+
+                        <div class="mask">
+                            <h2>{{ brand.name }}</h2>
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+
+        {% endfor %}
+    </div>
+    <div class="clear"></div>
+    <div class="search-part-form">
+        <h3>{{ 'searchByPartNumber'|trans }}</h3>
+        {{ form_start(searchPartForm, {'attr': {'id': 'searchPartForm'}}) }}
+        {{ form_errors(searchPartForm) }}
+
+        <div class="text-box">{{ form_widget(searchPartForm.partNumber, {'attr': {'placeholder': 'partNumber'|trans } }) }}</div>
+        <div class="clear"></div>
+        {{ form_widget(searchPartForm.send, { 'label': 'search'|trans, 'id': 'searchButton' }) }}
+        {{ form_end(searchPartForm) }}
+    </div>
+</div>

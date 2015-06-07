@@ -140,6 +140,7 @@
 #Katalogi
 "katalog" : "Part Catalogue"
 "cart": "My cart"
+"searchForPart": "Search for part"
 
 "removeFromCart": "Remove"
 "addToCart": "Add to cart"

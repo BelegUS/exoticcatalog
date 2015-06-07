@@ -41,7 +41,7 @@ catalog_brand_select:
     defaults: { _controller: PageBundle:Catalog:brandSelect }
 
 part_search_slider:
-    pattern:  /{_locale}/catalog
+    pattern:  /{_locale}/ajax_search
     defaults: { _controller: PageBundle:Catalog:partSearchSlider }
 
 catalog_model_select:

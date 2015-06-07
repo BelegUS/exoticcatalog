@@ -35,7 +35,6 @@ class CatalogController extends Controller {
 
     public function partSearchSliderAction()
     {
-
         $em = $this->getDoctrine()->getManager();
 
         $brands = $em->getRepository('ModelsBundle:Brand')->findAll();
@@ -43,7 +42,7 @@ class CatalogController extends Controller {
         $searchPartForm = $this->createForm(new PartSearchForm(), null, array(
             'action' => $this->generateUrl('catalog_part_search')));
 
-        return $this->render('PageBundle:Pages/Catalog:brand_select_content.html.twig', array(
+        return $this->render('PageBundle:Pages/Catalog:partSearchExtruder.html.twig', array(
             'brands' => $brands, 'searchPartForm' => $searchPartForm->createView()
         ));
     }
@@ -54,8 +53,6 @@ class CatalogController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $models = $em->getRepository('ModelsBundle:Model')->findByBrand($brandId, ['name' => 'ASC']);
-
-        //$sortedModels = array_chunk($models, 4);
 
         return $this->render('PageBundle:Pages/Catalog:modelSelect.html.twig', array(
                     'models' => $models
