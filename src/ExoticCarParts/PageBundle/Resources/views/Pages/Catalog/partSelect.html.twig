@@ -69,7 +69,9 @@
                 url: url,
                 cache: false,
                 success: function (result) {
-                    $("#cartContent").load('{{ path('catalog_my_cart') }}');
+                    $("#cartContent").load('{{ path('catalog_my_cart') }}', function(){
+                        $('#myCart').openMbExtruder(true);
+                    });
                 }
             });
         }
@@ -79,7 +81,6 @@
                 event.preventDefault();
                 partId = event.target.id;
                 quantityValue = $('input[id="quantity_'+partId+'"]:visible').val();
-                console.log(quantityValue);
                 partIdValue = partId.replace('part_', '');
                 addToCartButtonPressed(partIdValue, quantityValue);
             });

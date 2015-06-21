@@ -140,6 +140,7 @@
 "katalog" : "Part Catalogue"
   
 "cart": "My cart"
+"cartIsEmpty": "Your cart is empty"
 "searchForPart": "Search for part"
 
 "removeFromCart": "Entfernen"

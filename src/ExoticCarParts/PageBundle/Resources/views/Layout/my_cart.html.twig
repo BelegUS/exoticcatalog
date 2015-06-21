@@ -9,32 +9,32 @@
 
             {% for item in cart %}
                 {% if loop.first == false %}
-                    {% if item['part'].partsgroup.model.brand.name != previousBrandName  %}
+                    {% if item['part'].partsgroup.model.brand.name != previousBrandName %}
                     </ul></li>
                 {% endif %}
-                {% if item['part'].partsgroup.model.name != previousModelName  %}
+                {% if item['part'].partsgroup.model.name != previousModelName %}
             </ul></li>
         {% endif %}
-        {% if item['part'].partsgroup.name != previousPartsGroupName  %}
+        {% if item['part'].partsgroup.name != previousPartsGroupName %}
     </ul></li>
 {% endif %}   
 {% endif %}
 
-{% if item['part'].partsgroup.model.brand.name != previousBrandName  %}
-    <li> {{ item['part'].partsGroup.model.brand.name }} <ul>
-        {% endif %}
-        {% if item['part'].partsgroup.model.name != previousModelName  %}
-            <li> {{ item['part'].partsGroup.model.name }} <ul>
-                {% endif %}
-                {% if item['part'].partsgroup.name != previousPartsGroupName  %}
-                    <li> {{ item['part'].partsGroup.name }} <ul class="partList">
-                        {% endif %}   
-                        <li> {{ item['quantity'] }} x {{ item['part'].name }} - {{item['part'].getActualPriceText(exchangeRates, item['quantity']) }} <a href="" class="removeFromCart" id="{{ item['part'].id }}">{{ 'removeFromCart'|trans }}</a></li>
+{% if item['part'].partsgroup.model.brand.name != previousBrandName %}
+        <li> {{ item['part'].partsGroup.model.brand.name }} <ul>
+    {% endif %}
+        {% if item['part'].partsgroup.model.name != previousModelName %}
+        <li> {{ item['part'].partsGroup.model.name }} <ul>
+    {% endif %}
+                {% if item['part'].partsgroup.name != previousPartsGroupName %}
+        <li> {{ item['part'].partsGroup.name }} <ul class="partList">
+    {% endif %}
+                        <li> {{ item['quantity'] }} x {{ item['part'].name }} - {{ item['part'].getActualPriceText(exchangeRates, item['quantity']) }} <a href="" class="removeFromCart" id="{{ item['part'].id }}">{{ 'removeFromCart'|trans }}</a></li>
                         
 
                         {% if loop.last == true %}
-                        </ul></li>
-                </ul></li>
+        </ul></li>
+        </ul></li>
         </ul></li>
     {% endif %}  
 
@@ -58,52 +58,54 @@
 {{ form_end(form) }}
 <div id="cartSendResult"></div>
 </div>
+{% else %}
+        <h4>{{ 'cartIsEmpty'|trans }}</h4>
 {% endif %}
 </div>
 {% block javascripts %}
-<script type="text/javascript">
+    <script type="text/javascript">
 
-function removeFromCartButtonPressed(id){
-    var url = '{{ path('ajax_remove_part_from_cart', {'partId': 'id'}) }}'; 
-    url = url.replace("id", id);
+        function removeFromCartButtonPressed(id) {
+            var url = '{{ path('ajax_remove_part_from_cart', {'partId': 'id'}) }}';
+            url = url.replace("id", id);
             $.ajax({
-          url: url,
-          cache: false,
-          success: function(result){
-             $("#cartContent").load('{{ path('catalog_my_cart') }}');
-          }
+                url: url,
+                cache: false,
+                success: function (result) {
+                    $("#cartContent").load('{{ path('catalog_my_cart') }}');
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('.removeFromCart').on('click', function (event) {
+                event.preventDefault();
+                removeFromCartButtonPressed(this.id);
+            });
         });
-}
 
-$(document).ready(function() {     
-  $('.removeFromCart').on('click', function(event){
-        event.preventDefault();
-        removeFromCartButtonPressed(this.id);
-    });
-});
+        $(function () {
+            $('#cartContactForm').submit(function (e) {
+                // Stop the form actually posting
+                e.preventDefault();
+                var url = $("#cartContactForm").attr("action");
+                //If reason of Contact: "other", then remove() unnecesary part-related values
+                // Send the request
+                $.post(url,
+                        $("#cartContactForm").serialize(),
+                        function (data) {
 
-$(function() {
-    $('#cartContactForm').submit(function(e) {
-        // Stop the form actually posting
-        e.preventDefault();
-        var url = $("#cartContactForm").attr("action");
-        //If reason of Contact: "other", then remove() unnecesary part-related values
-        // Send the request
-        $.post(url,
-                $("#cartContactForm").serialize(),
-                function(data) {
+                            if (data.responseCode == 200) {
+                                $('#cartSendResult').html('Sent');
+                                $('#cartSendResult').css("color", "green");
+                            }
 
-                if(data.responseCode==200 ){           
-                    $('#cartSendResult').html('Sent');
-                    $('#cartSendResult').css("color","green");
-                }    
-
-                });
-        //Do not allow to click the button again 
-        $('#widened-send-button').hide();
-    });
-});
+                        });
+                //Do not allow to click the button again
+                $('#widened-send-button').hide();
+            });
+        });
 
 
-</script>
+    </script>
 {% endblock %}

@@ -36,3 +36,13 @@
 
 </div>
 {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function(){
+            for(i = 0; i<3; i++) {
+                $('#searchForPart .flap').fadeOut(600).fadeIn(600);
+            }
+        });
+    </script>
+{% endblock %}

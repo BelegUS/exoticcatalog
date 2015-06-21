@@ -144,6 +144,7 @@
 "katalog" : "Katalogi"
   
 "cart": "Twój koszyk"
+"cartIsEmpty": "Twój koszyk jest pusty"
 "searchForPart": "Szukaj części"
 
 "removeFromCart": "Usuń"

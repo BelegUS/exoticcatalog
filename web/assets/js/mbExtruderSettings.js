@@ -7,7 +7,6 @@ $("#myCart").buildMbExtruder({
     onExtOpen: function () {
     },
     onExtContentLoad: function () {
-        $("#myCart").openPanel();
     },
     onExtClose: function () {
     }

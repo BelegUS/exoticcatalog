@@ -1405,6 +1405,16 @@ div#auction-nudge-items ul#images-only li div.image-container {
     text-transform: uppercase;
 }
 
+#cartContent h4 {
+    color: #c0c0c0;
+    font-family: "special";
+    font-size: 1.1em;
+    font-weight: 700;
+    padding: 0.5em 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
 .partList {
     list-style-type: disc;
     list-style-position: inside;
