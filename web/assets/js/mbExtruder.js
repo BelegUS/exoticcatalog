@@ -377,7 +377,10 @@ jQuery.browser.mobile = jQuery.browser.android || jQuery.browser.blackberry || j
 				zi = cur > zi ? parseInt($(this).css('zIndex')) : zi;
 			}
 		});
-		$(this).css('zIndex',zi+=1);
+		if(zi > 1555) {
+			zi = 1554;
+		}
+		$(this).css('zIndex',zi);
 		return zi;
 	};
 

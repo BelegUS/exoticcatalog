@@ -35,14 +35,37 @@
 
 
 </div>
+    {{ include('PageBundle:Joyride:joyride_steps.html.twig') }}
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
     <script>
         $(document).ready(function(){
-            for(i = 0; i<3; i++) {
-                $('#searchForPart .flap').fadeOut(600).fadeIn(600);
+            blink = function(element){
+                for(i = 0; i<3; i++) {
+                    element.fadeOut(600).fadeIn(600);
+                }
             }
+//            $('#searchForPart').find('.flap').find('div').attr('id', 'searchForPartFlap');
+//            $('#myCart').find('.flap').find('div').attr('id', 'myCartFlap');
+//            $('#searchForPart').find('.extruder_content').attr('id', 'searchForPartContent');
+            $("#joyRideTipContent").joyride({
+                autoStart: true,
+                tipAnimation: 'fade',
+                'tipAnimationFadeSpeed': 800,
+                'modal': true,
+                'postStepCallback': function(index, tip){
+                    if(index==0) {
+                        blink($('#searchForPart .flap'));
+                    } else if(index==1) {
+                        $('#searchForPart').openMbExtruder(true);
+                    } else if(index==2) {
+                        blink($('#myCart .flap'));
+                    } else if(index==3) {
+                        $('#myCart').openMbExtruder(true);
+                    }
+                }
+            });
         });
     </script>
 {% endblock %}

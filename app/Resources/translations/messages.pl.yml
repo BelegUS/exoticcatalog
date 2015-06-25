@@ -149,5 +149,12 @@
 
 "removeFromCart": "Usuń"
 "addToCart": "Dodaj do koszyka"
+
+"catalogueIntroduction": "Zachęcamy do korzystania z nowej funkcjonalności - Katalogów Części."
+"partSearchLabelIntroduction": "Naciskając na przycisk z lewej strony, otworzyć można wyszukiwarkę części."
+'partSearchIntroduction': "Wyszukiwarka pozwala na odnalezienie części poprzez wybór marki i modelu pojazdu, lub poprzez jej numer seryjny."
+'myCartLabelIntroduction': "Naciskając na przycisk z prawej strony, otworzyć można swój koszyk."
+'myCartIntroduction': "W koszyku znajdują się interesujące nas części. Po wybraniu części, wysłać można zapytanie ofertowe."
+
   
   
