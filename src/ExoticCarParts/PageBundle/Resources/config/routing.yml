@@ -77,3 +77,7 @@ catalog_part_search:
     pattern: /{_locale}/catalog/search
     defaults: { _controller: PageBundle:Catalog:partSearch }
     methods: [POST]
+
+catalog_part_search_for_model:
+    pattern: /{_locale}/catalog/partsearchformodel/{modelId}/{partNumber}
+    defaults: { _controller: PageBundle:Catalog:partSearchForModel }

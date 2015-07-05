@@ -161,14 +161,48 @@ class CatalogController extends Controller {
         if ($request->getMethod() == 'POST') {
             $searchPartForm->handleRequest($request);
             $data = $searchPartForm->getData();
+            $partNumber = $data['partNumber'];
 
             $em = $this->getDoctrine()->getManager();
-            $part = $em->getRepository('ModelsBundle:Part')->findOneByPartNumber($data['partNumber']);
-            if(!empty($part)) {
-                return $this->redirect($this->generateUrl('catalog_part_select', array('partsGroupId'=>$part->getPartsGroup()->getId(), 'highlightedPartNumber'=>$part->getPartNumber())));
+            $parts = $em->getRepository('ModelsBundle:Part')->findByPartNumber($partNumber);
+            if(!empty($parts)) {
+                if(count($parts) === 1) {
+                    $part = $parts[0];
+                    return $this->redirect($this->generateUrl('catalog_part_select', array(
+                        'partsGroupId' => $part->getPartsGroup()->getId(),
+                        'highlightedPartNumber' => $part->getPartNumber()
+                    )));
+                } else {
+                    $models = array();
+                    foreach($parts as $part) {
+                        $models[] = $part->getPartsGroup()->getModel();
+                    }
+                    return $this->render('PageBundle:Pages/Catalog:modelSelectForPart.html.twig', array('models' => $models, 'partNumber'=> $partNumber));
+                }
             }
         }
         return $this->render('PageBundle:Pages/Catalog:partSearch.html.twig', array('searchPartForm' => $searchPartForm->createView(), 'notFound'=> true));
+    }
+
+    public function partSearchForModelAction($modelId, $partNumber)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $modelParts = $em->getRepository('ModelsBundle:Part')->findByPartNumber($partNumber);
+
+        $part = null;
+        foreach($modelParts as $modelPart) {
+            if($modelPart->getPartsGroup()->getModel()->getId() == $modelId) {
+                $part  = $modelPart;
+                break;
+            }
+        }
+
+        return $this->redirect($this->generateUrl('catalog_part_select', array(
+            'partsGroupId' => $part->getPartsGroup()->getId(),
+            'highlightedPartNumber' => $part->getPartNumber()
+        )));
+
     }
 
 }
